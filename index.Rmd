@@ -1,5 +1,5 @@
 --- 
-title: "CMSC320 Final Project"
+title: "CMSC 320 Final Project"
 author: "Jack Cole, Nafi Mondal, and Sergio Quispe"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
@@ -7,7 +7,7 @@ documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
-description: "Final Project for CMSC320 - Introduction to Data Science."
+description: "Final Project for CMSC 320 - Introduction to Data Science."
 ---
 
 # Prerequisites

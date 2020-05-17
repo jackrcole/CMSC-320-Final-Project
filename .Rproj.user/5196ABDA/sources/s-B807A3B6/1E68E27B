@@ -1,19 +1,19 @@
 {
     "collab_server" : "",
     "contents" : "",
-    "created" : 1589733240937.000,
+    "created" : 1589757431518.000,
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "3780466546",
-    "id" : "E2E37550",
-    "lastKnownWriteTime" : 1589757711,
-    "last_content_update" : 1589757711220,
-    "path" : "~/CMSC-320-Final-Project/index.Rmd",
-    "project_path" : "index.Rmd",
+    "hash" : "0",
+    "id" : "1E68E27B",
+    "lastKnownWriteTime" : 1589733237,
+    "last_content_update" : 1589733237,
+    "path" : "~/CMSC-320-Final-Project/01-intro.Rmd",
+    "project_path" : "01-intro.Rmd",
     "properties" : {
-        "cursorPosition" : "9,37",
-        "scrollLine" : "0"
+        "cursorPosition" : "3,0",
+        "scrollLine" : "1"
     },
     "read_only" : false,
     "read_only_alternatives" : [
