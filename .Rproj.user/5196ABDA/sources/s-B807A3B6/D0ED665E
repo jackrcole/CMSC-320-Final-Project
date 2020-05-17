@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1589733240852.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1248109858",
+    "id" : "D0ED665E",
+    "lastKnownWriteTime" : 1589733237,
+    "last_content_update" : 1589733237,
+    "path" : "~/CMSC-320-Final-Project/_output.yml",
+    "project_path" : "_output.yml",
+    "properties" : {
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "yaml"
+}

@@ -1,0 +1,5 @@
+book_filename: "CMSC-320-Final-Project"
+delete_merged_file: true
+language:
+  ui:
+    chapter_name: "Chapter "
