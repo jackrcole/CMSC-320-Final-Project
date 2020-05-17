@@ -5,13 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "2854827995",
+    "hash" : "306305283",
     "id" : "A52C9D44",
-    "lastKnownWriteTime" : 1589733237,
-    "last_content_update" : 1589733237,
+    "lastKnownWriteTime" : 1589748886,
+    "last_content_update" : 1589748886029,
     "path" : "~/CMSC-320-Final-Project/_bookdown.yml",
     "project_path" : "_bookdown.yml",
     "properties" : {
+        "cursorPosition" : "5,18",
+        "scrollLine" : "0"
     },
     "read_only" : false,
     "read_only_alternatives" : [
