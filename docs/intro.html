@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="index.html"/>
-<link rel="next" href="the-basics.html"/>
+<link rel="next" href="literature.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -132,15 +132,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a></li>
-<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
-<li class="chapter" data-level="3" data-path="the-basics.html"><a href="the-basics.html"><i class="fa fa-check"></i><b>3</b> The Basics</a></li>
-<li class="chapter" data-level="4" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>4</b> Literature</a></li>
-<li class="chapter" data-level="5" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>5</b> Methods</a></li>
-<li class="chapter" data-level="6" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>6</b> Applications</a><ul>
-<li class="chapter" data-level="6.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>6.1</b> Example one</a></li>
-<li class="chapter" data-level="6.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>6.2</b> Example two</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#data-cleaning"><i class="fa fa-check"></i><b>2.1</b> Data Cleaning</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="intro.html"><a href="intro.html#getting-started"><i class="fa fa-check"></i><b>2.1.1</b> Getting Started</a></li>
+<li class="chapter" data-level="2.1.2" data-path="intro.html"><a href="intro.html#pipelines-and-basic-functions"><i class="fa fa-check"></i><b>2.1.2</b> Pipelines and Basic Functions</a></li>
+<li class="chapter" data-level="2.1.3" data-path="intro.html"><a href="intro.html#data-cleaning-1"><i class="fa fa-check"></i><b>2.1.3</b> Data Cleaning</a></li>
+<li class="chapter" data-level="2.1.4" data-path="intro.html"><a href="intro.html#parsing-and-management"><i class="fa fa-check"></i><b>2.1.4</b> Parsing and Management</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>7</b> Final Words</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>3</b> Literature</a></li>
+<li class="chapter" data-level="4" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>4</b> Methods</a></li>
+<li class="chapter" data-level="5" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>5</b> Applications</a><ul>
+<li class="chapter" data-level="5.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>5.1</b> Example one</a></li>
+<li class="chapter" data-level="5.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>5.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>6</b> Final Words</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -165,7 +171,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="intro" class="section level1">
 <h1><span class="header-section-number">Chapter 2</span> Introduction</h1>
 <p>Welcome to our guide!</p>
-<p>As the field of data science grows in importance, from big data to machine learning, it becomes increasingly important to gain an insight on how the basics of data science theory and its applications work. Our goal is to introduce to you the foundations of data science so you are able to apply it in any job, freelancing projects, or personal use! By the end of this guide, we hope you are able plot beautiful data like this:</p>
+<p>From big data to machine learning, as data science becomes an area of ever-increasing importance, it is essential for people to gain an understanding of the foundational theory and applications of data science. Whether it’s for a job, freelancing, or personal fun, our aim is to teach you the basics so you can make beautiful data representations like this:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="fl">.1</span>, <span class="fl">.1</span>))</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">plot</span>(pressure, <span class="dt">type =</span> <span class="st">&#39;b&#39;</span>, <span class="dt">pch =</span> <span class="dv">19</span>)</a></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:nice-fig"></span>
@@ -174,7 +180,643 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 Figure 2.1: Here is a nice figure!
 </p>
 </div>
-<p>For this tutorial, we will be using R. Our dataset will be Kaggle’s global terrorism dataset, developed by researchers at the University of Maryland. It can be accessed here: <a href="https://www.kaggle.com/START-UMD/gtd?select=globalterrorismdb_0718dist.csv" class="uri">https://www.kaggle.com/START-UMD/gtd?select=globalterrorismdb_0718dist.csv</a>.</p>
+<p>For this guide, we’ll be using R, and our dataset will be Kaggle’s global terrorism database, which can be accessed from here: <a href="https://www.kaggle.com/START-UMD/gtd?select=globalterrorismdb_0718dist.csv" class="uri">https://www.kaggle.com/START-UMD/gtd?select=globalterrorismdb_0718dist.csv</a>.</p>
+<!-- ## The Basics -->
+<!-- First, put the tidyverse library into your R file. -->
+<!-- This library comes with a variety of functions and operators to make data manipulation and tidying easier. For a comprehensive overview, see here: https://medium.com/@brianward1428/introduction-to-tidyverse-7b3dbf2337d5. -->
+<!-- Next, download the csv file onto your machine. To access it, set the working directory to the directory the file is in, and read it into a data frame with a variable name ("df" in the example below): -->
+<!-- ```{r data} -->
+<!-- setwd("C:/Users/Amit/Documents/Final Project/Global Terrorism")  ## Use the setwd() function and the path to change directories -->
+<!-- df <- read.csv("globalterrorismdb_0718dist.csv")                 ## Use the read.csv() function with the file name to access csv file -->
+<!-- head(df)                                                         ## Show top of df -->
+<!-- ``` -->
+<!-- As you can see, there is a lot of data to look through. But don't worry: we have tools to help us. -->
+<!-- ## Pipelines and Basic Functions -->
+<!-- Some basic operations for R include: -->
+<!-- -select() -> selects specific vertical columns in the dataset -->
+<!-- -slice() -> selects specific horizontal rows in a dataset -->
+<!-- -filter() -> selects specific rows in a dataset based on a specific value in a column -->
+<!-- -mutate() -> add a new column to a dataset -->
+<!-- -arrange() -> sort entities within a column -->
+<!-- -summarize() -> creates a new table with summaries of the columns in the original dataset -->
+<!-- One concept in data science is the use of a pipeline, which looks like "%>%" in R. This bit of "syntactic sugar" makes it easier to understand how the data is being manipulated. Here's some examples with the above functions: -->
+<!-- ```{r expl1} -->
+<!-- # Data with attacks from September 1971 -->
+<!-- acts_sep71 <- df %>%            ## From df, have all occurances where iyear is 1971 and imonth is 9 -->
+<!--   filter(iyear == 1971) %>%     ## This line filters out all years that are not 1971 -->
+<!--   filter(imonth == 9)           ## This line filters out all months that are not 9 (Sept.) -->
+<!-- head(acts_sep71) -->
+<!-- ``` -->
+<!-- ```{r expl2} -->
+<!-- # From September 1971 attacks, get coordinates of each attack -->
+<!-- sep71_coord <- acts_sep71 %>%                         ## From acts_sep71... -->
+<!--   select(eventid, country_txt, latitude, longitude)   ## Select the eventid, country_txt, latitude, and longitude columns -->
+<!-- head(sept71_coord) -->
+<!-- ``` -->
+<!-- ```{r expl 3} -->
+<!-- # From the previous data frame, order the countries alphabetically and select the top 10 -->
+<!-- coords10 <- sep71_coord %>%     ## From set71_coord... -->
+<!--   arrange(country_txt) %>%      ## arrange the country names in alphabetical order -->
+<!--   slice(1:10)                   ## select the ten terror acts at the top -->
+<!-- coords10 -->
+<!-- ``` -->
+<!-- ```{r expl4} -->
+<!-- # Summarize a few attributes of the September 1971 attacks -->
+<!-- data_summary <- acts_sep71 %>%                                            ## From dataset, summarize mean success rate... -->
+<!--   summarize(success_rate = mean(success), half_way_day = median(iday))    ## ...and day where data can be split in two -->
+<!-- data_summary -->
+<!-- ``` -->
+<!-- For more reading on the basic operations (plus some extras), see here: https://www.hcbravo.org/IntroDataSci/bookdown-notes/principles-basic-operations.html. -->
+<div id="data-cleaning" class="section level2">
+<h2><span class="header-section-number">2.1</span> Data Cleaning</h2>
+<p>In data science, the way data is presented is important to the understanding of the data itself. Confusing variables or missing variables can negatively impact the understanding of what the data is trying to convey. Therefore, it is important to fix these errors when they arise.</p>
+<div id="getting-started" class="section level3">
+<h3><span class="header-section-number">2.1.1</span> Getting Started</h3>
+<p>First, put the tidyverse library into your R file.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+<pre><code>## ── Attaching packages ────────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
+<pre><code>## ✓ ggplot2 3.3.0     ✓ purrr   0.3.3
+## ✓ tibble  3.0.0     ✓ dplyr   0.8.5
+## ✓ tidyr   1.0.2     ✓ stringr 1.4.0
+## ✓ readr   1.3.1     ✓ forcats 0.5.0</code></pre>
+<pre><code>## ── Conflicts ───────────────────────────────────────────── tidyverse_conflicts() ──
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<p>This library comes with a variety of functions and operators to make data manipulation and tidying easier. For a comprehensive overview, see here: <a href="https://medium.com/@brianward1428/introduction-to-tidyverse-7b3dbf2337d5" class="uri">https://medium.com/@brianward1428/introduction-to-tidyverse-7b3dbf2337d5</a>.</p>
+<p>Next, download the csv file onto your machine. To access it, set the working directory to the directory the file is in, and read it into a data frame with a variable name (“df” in the example below):</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">setwd</span>(<span class="st">&quot;~/Desktop&quot;</span>)  <span class="co">## Use the setwd() function and the path to change directories</span></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">df &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;globalterrorismdb_0718dist.csv&quot;</span>)                 <span class="co">## Use the read.csv() function with the file name to access csv file</span></a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="kw">head</span>(df)                                                         <span class="co">## Show top of df</span></a></code></pre></div>
+<pre><code>##       eventid iyear imonth iday approxdate extended resolution country
+## 1 1.97000e+11  1970      7    2                   0                 58
+## 2 1.97000e+11  1970      0    0                   0                130
+## 3 1.97001e+11  1970      1    0                   0                160
+## 4 1.97001e+11  1970      1    0                   0                 78
+## 5 1.97001e+11  1970      1    0                   0                101
+## 6 1.97001e+11  1970      1    1                   0                217
+##          country_txt region                  region_txt provstate          city
+## 1 Dominican Republic      2 Central America &amp; Caribbean           Santo Domingo
+## 2             Mexico      1               North America   Federal   Mexico city
+## 3        Philippines      5              Southeast Asia    Tarlac       Unknown
+## 4             Greece      8              Western Europe    Attica        Athens
+## 5              Japan      4                   East Asia   Fukouka       Fukouka
+## 6      United States      1               North America  Illinois         Cairo
+##   latitude longitude specificity vicinity location
+## 1 18.45679 -69.95116           1        0         
+## 2 19.37189 -99.08662           1        0         
+## 3 15.47860 120.59974           4        0         
+## 4 37.99749  23.76273           1        0         
+## 5 33.58041 130.39636           1        0         
+## 6 37.00511 -89.17627           1        0         
+##                                                                                                                                                                                                                                                                                                                                                    summary
+## 1                                                                                                                                                                                                                                                                                                                                                         
+## 2                                                                                                                                                                                                                                                                                                                                                         
+## 3                                                                                                                                                                                                                                                                                                                                                         
+## 4                                                                                                                                                                                                                                                                                                                                                         
+## 5                                                                                                                                                                                                                                                                                                                                                         
+## 6 1/1/1970: Unknown African American assailants fired several bullets at police headquarters in Cairo, Illinois, United States.  There were no casualties, however, one bullet narrowly missed several police officers.  This attack took place during heightened racial tensions, including a Black boycott of White-owned businesses, in Cairo Illinois.
+##   crit1 crit2 crit3 doubtterr alternative alternative_txt multiple success
+## 1     1     1     1         0          NA                        0       1
+## 2     1     1     1         0          NA                        0       1
+## 3     1     1     1         0          NA                        0       1
+## 4     1     1     1         0          NA                        0       1
+## 5     1     1     1        -9          NA                        0       1
+## 6     1     1     1         0          NA                        0       1
+##   suicide attacktype1                attacktype1_txt attacktype2
+## 1       0           1                  Assassination          NA
+## 2       0           6    Hostage Taking (Kidnapping)          NA
+## 3       0           1                  Assassination          NA
+## 4       0           3              Bombing/Explosion          NA
+## 5       0           7 Facility/Infrastructure Attack          NA
+## 6       0           2                  Armed Assault          NA
+##   attacktype2_txt attacktype3 attacktype3_txt targtype1
+## 1                          NA                        14
+## 2                          NA                         7
+## 3                          NA                        10
+## 4                          NA                         7
+## 5                          NA                         7
+## 6                          NA                         3
+##                 targtype1_txt targsubtype1
+## 1 Private Citizens &amp; Property           68
+## 2     Government (Diplomatic)           45
+## 3         Journalists &amp; Media           54
+## 4     Government (Diplomatic)           46
+## 5     Government (Diplomatic)           46
+## 6                      Police           22
+##                                       targsubtype1_txt
+## 1                                       Named Civilian
+## 2 Diplomatic Personnel (outside of embassy, consulate)
+## 3                      Radio Journalist/Staff/Facility
+## 4                                    Embassy/Consulate
+## 5                                    Embassy/Consulate
+## 6      Police Building (headquarters, station, school)
+##                         corp1                   target1 natlty1
+## 1                                          Julio Guzman      58
+## 2 Belgian Ambassador Daughter   Nadine Chaval, daughter      21
+## 3            Voice of America                  Employee     217
+## 4                                          U.S. Embassy     217
+## 5                                        U.S. Consulate     217
+## 6     Cairo Police Department Cairo Police Headquarters     217
+##          natlty1_txt targtype2 targtype2_txt targsubtype2 targsubtype2_txt
+## 1 Dominican Republic        NA                         NA                 
+## 2            Belgium        NA                         NA                 
+## 3      United States        NA                         NA                 
+## 4      United States        NA                         NA                 
+## 5      United States        NA                         NA                 
+## 6      United States        NA                         NA                 
+##   corp2 target2 natlty2 natlty2_txt targtype3 targtype3_txt targsubtype3
+## 1                    NA                    NA                         NA
+## 2                    NA                    NA                         NA
+## 3                    NA                    NA                         NA
+## 4                    NA                    NA                         NA
+## 5                    NA                    NA                         NA
+## 6                    NA                    NA                         NA
+##   targsubtype3_txt corp3 target3 natlty3 natlty3_txt
+## 1                                     NA            
+## 2                                     NA            
+## 3                                     NA            
+## 4                                     NA            
+## 5                                     NA            
+## 6                                     NA            
+##                                gname gsubname gname2 gsubname2 gname3 gsubname3
+## 1                             MANO-D                                           
+## 2 23rd of September Communist League                                           
+## 3                            Unknown                                           
+## 4                            Unknown                                           
+## 5                            Unknown                                           
+## 6                 Black Nationalists                                           
+##                                           motive guncertain1 guncertain2
+## 1                                                          0          NA
+## 2                                                          0          NA
+## 3                                                          0          NA
+## 4                                                          0          NA
+## 5                                                          0          NA
+## 6 To protest the Cairo Illinois Police Deparment           0          NA
+##   guncertain3 individual nperps nperpcap claimed claimmode claimmode_txt claim2
+## 1          NA          0     NA       NA      NA        NA                   NA
+## 2          NA          0      7       NA      NA        NA                   NA
+## 3          NA          0     NA       NA      NA        NA                   NA
+## 4          NA          0     NA       NA      NA        NA                   NA
+## 5          NA          0     NA       NA      NA        NA                   NA
+## 6          NA          0    -99      -99       0        NA                   NA
+##   claimmode2 claimmode2_txt claim3 claimmode3 claimmode3_txt compclaim
+## 1         NA                    NA         NA                       NA
+## 2         NA                    NA         NA                       NA
+## 3         NA                    NA         NA                       NA
+## 4         NA                    NA         NA                       NA
+## 5         NA                    NA         NA                       NA
+## 6         NA                    NA         NA                       NA
+##   weaptype1 weaptype1_txt weapsubtype1       weapsubtype1_txt weaptype2
+## 1        13       Unknown           NA                               NA
+## 2        13       Unknown           NA                               NA
+## 3        13       Unknown           NA                               NA
+## 4         6    Explosives           16 Unknown Explosive Type        NA
+## 5         8    Incendiary           NA                               NA
+## 6         5      Firearms            5       Unknown Gun Type        NA
+##   weaptype2_txt weapsubtype2 weapsubtype2_txt weaptype3 weaptype3_txt
+## 1                         NA                         NA              
+## 2                         NA                         NA              
+## 3                         NA                         NA              
+## 4                         NA                         NA              
+## 5                         NA                         NA              
+## 6                         NA                         NA              
+##   weapsubtype3 weapsubtype3_txt weaptype4 weaptype4_txt weapsubtype4
+## 1           NA                         NA                         NA
+## 2           NA                         NA                         NA
+## 3           NA                         NA                         NA
+## 4           NA                         NA                         NA
+## 5           NA                         NA                         NA
+## 6           NA                         NA                         NA
+##   weapsubtype4_txt                   weapdetail nkill nkillus nkillter nwound
+## 1                                                   1      NA       NA      0
+## 2                                                   0      NA       NA      0
+## 3                                                   1      NA       NA      0
+## 4                                     Explosive    NA      NA       NA     NA
+## 5                                    Incendiary    NA      NA       NA     NA
+## 6                  Several gunshots were fired.     0       0        0      0
+##   nwoundus nwoundte property propextent              propextent_txt propvalue
+## 1       NA       NA        0         NA                                    NA
+## 2       NA       NA        0         NA                                    NA
+## 3       NA       NA        0         NA                                    NA
+## 4       NA       NA        1         NA                                    NA
+## 5       NA       NA        1         NA                                    NA
+## 6        0        0        1          3 Minor (likely &lt; $1 million)        NA
+##   propcomment ishostkid nhostkid nhostkidus nhours ndays divert kidhijcountry
+## 1                     0       NA         NA     NA    NA                     
+## 2                     1        1          0     NA    NA               Mexico
+## 3                     0       NA         NA     NA    NA                     
+## 4                     0       NA         NA     NA    NA                     
+## 5                     0       NA         NA     NA    NA                     
+## 6                     0       NA         NA     NA    NA                     
+##   ransom ransomamt ransomamtus ransompaid ransompaidus ransomnote
+## 1      0        NA          NA         NA           NA           
+## 2      1     8e+05          NA         NA           NA           
+## 3      0        NA          NA         NA           NA           
+## 4      0        NA          NA         NA           NA           
+## 5      0        NA          NA         NA           NA           
+## 6      0        NA          NA         NA           NA           
+##   hostkidoutcome hostkidoutcome_txt nreleased
+## 1             NA                           NA
+## 2             NA                           NA
+## 3             NA                           NA
+## 4             NA                           NA
+## 5             NA                           NA
+## 6             NA                           NA
+##                                                                           addnotes
+## 1                                                                                 
+## 2                                                                                 
+## 3                                                                                 
+## 4                                                                                 
+## 5                                                                                 
+## 6 The Cairo Chief of Police, William Petersen, resigned as a result of the attack.
+##                                                    scite1
+## 1                                                        
+## 2                                                        
+## 3                                                        
+## 4                                                        
+## 5                                                        
+## 6 &quot;Police Chief Quits,&quot; Washington Post, January 2, 1970.
+##                                                                                    scite2
+## 1                                                                                        
+## 2                                                                                        
+## 3                                                                                        
+## 4                                                                                        
+## 5                                                                                        
+## 6 &quot;Cairo Police Chief Quits; Decries Local &#39;Militants&#39;,&quot; Afro-American, January 10, 1970.
+##                                                                                                                          scite3
+## 1                                                                                                                              
+## 2                                                                                                                              
+## 3                                                                                                                              
+## 4                                                                                                                              
+## 5                                                                                                                              
+## 6 Christopher Hewitt, &quot;Political Violence and Terrorism in Modern America: A Chronology,&quot; Praeger Security International, 2005.
+##         dbsource INT_LOG INT_IDEO INT_MISC INT_ANY related
+## 1           PGIS       0        0        0       0        
+## 2           PGIS       0        1        1       1        
+## 3           PGIS      -9       -9        1       1        
+## 4           PGIS      -9       -9        1       1        
+## 5           PGIS      -9       -9        1       1        
+## 6 Hewitt Project      -9       -9        0      -9</code></pre>
+<p>As you can see, there is a lot of data to look through. But don’t worry: we have tools to help us.</p>
+</div>
+<div id="pipelines-and-basic-functions" class="section level3">
+<h3><span class="header-section-number">2.1.2</span> Pipelines and Basic Functions</h3>
+<p>Some basic operations for R include:</p>
+<p>-select() -&gt; selects specific vertical columns in the dataset
+-slice() -&gt; selects specific horizontal rows in a dataset
+-filter() -&gt; selects specific rows in a dataset based on a specific value in a column
+-mutate() -&gt; add a new column to a dataset
+-arrange() -&gt; sort entities within a column
+-summarize() -&gt; creates a new table with summaries of the columns in the original dataset</p>
+<p>One concept in data science is the use of a pipeline, which looks like “%&gt;%” in R. This bit of “syntactic sugar” makes it easier to understand how the data is being manipulated. Here’s some examples with the above functions:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="co"># Data with attacks from September 1971</span></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2">acts_sep71 &lt;-<span class="st"> </span>df <span class="op">%&gt;%</span><span class="st">            </span><span class="co">## From df, have all occurances where iyear is 1971 and imonth is 9</span></a>
+<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(iyear <span class="op">==</span><span class="st"> </span><span class="dv">1971</span>) <span class="op">%&gt;%</span><span class="st">     </span><span class="co">## This line filters out all years that are not 1971</span></a>
+<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="st">  </span><span class="kw">filter</span>(imonth <span class="op">==</span><span class="st"> </span><span class="dv">9</span>)           <span class="co">## This line filters out all months that are not 9 (Sept.)</span></a>
+<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="kw">head</span>(acts_sep71)</a></code></pre></div>
+<pre><code>##       eventid iyear imonth iday approxdate extended resolution country
+## 1 1.97109e+11  1971      9    0                   0                 36
+## 2 1.97109e+11  1971      9    0                   0                 36
+## 3 1.97109e+11  1971      9    1                   0                217
+## 4 1.97109e+11  1971      9    2                   0                217
+## 5 1.97109e+11  1971      9    2                   0                217
+## 6 1.97109e+11  1971      9    3                   0                603
+##      country_txt region     region_txt        provstate         city latitude
+## 1       Cambodia      5 Southeast Asia       Phnom Penh   Phnom Penh 11.55883
+## 2       Cambodia      5 Southeast Asia       Phnom Penh   Phnom Penh 11.55883
+## 3  United States      1  North America          Georgia     Columbus 32.46292
+## 4  United States      1  North America   North Carolina   Kannapolis 35.48747
+## 5  United States      1  North America   North Carolina Fayetteville 35.07801
+## 6 United Kingdom      8 Western Europe Northern Ireland     Kinawley 54.22641
+##    longitude specificity vicinity                             location
+## 1 104.917445           1        0                                     
+## 2 104.917445           1        0                                     
+## 3 -84.987629           1        0    Two classrooms in a vacant school
+## 4 -80.622003           1        0                                     
+## 5 -78.963646           1        1 The incident occurred at Fort Bragg.
+## 6  -7.649053           1        0                                     
+##                                                                                                                                                                                                                                               summary
+## 1                                                                                                                                                                                                                                                    
+## 2                                                                                                                                                                                                                                                    
+## 3                                                                          9/1/1971: Unknown perpetrators detonated a dynamite bomb in two vacant classrooms of a desegregated school in Columbus, Georgia, United States.  There were no casualties.
+## 4 9/2/1971: Unknown perpetrators threw eight firebombs into the recently desegregated George Washington Carver Elementary School in Kannapolis, North Carolina, United States.  There were no casualties and the school sustained only minor damages.
+## 5                                                                                                           9/2/1971: Unknown perpetrators failed in their attempts to bomb a barracks at the Fort Bragg  Army Base in North Carolina, United States.
+## 6                                                                                                                                                                                                                                                    
+##   crit1 crit2 crit3 doubtterr alternative            alternative_txt multiple
+## 1     1     1     1         0          NA                                   0
+## 2     1     1     1         0          NA                                   0
+## 3     1     1     1         0          NA                                   0
+## 4     1     1     1         0          NA                                   0
+## 5     1     1     1         0          NA                                   0
+## 6     1     1     0         1           1 Insurgency/Guerilla Action        0
+##   success suicide attacktype1                attacktype1_txt attacktype2
+## 1       0       0           1                  Assassination          NA
+## 2       1       0           1                  Assassination          NA
+## 3       1       0           3              Bombing/Explosion          NA
+## 4       1       0           7 Facility/Infrastructure Attack          NA
+## 5       0       0           3              Bombing/Explosion          NA
+## 6       1       0           1                  Assassination          NA
+##   attacktype2_txt attacktype3 attacktype3_txt targtype1           targtype1_txt
+## 1                          NA                         7 Government (Diplomatic)
+## 2                          NA                         7 Government (Diplomatic)
+## 3                          NA                         8 Educational Institution
+## 4                          NA                         8 Educational Institution
+## 5                          NA                         4                Military
+## 6                          NA                         4                Military
+##   targsubtype1                                        targsubtype1_txt
+## 1           45    Diplomatic Personnel (outside of embassy, consulate)
+## 2           45    Diplomatic Personnel (outside of embassy, consulate)
+## 3           49                  School/University/Educational Building
+## 4           49                  School/University/Educational Building
+## 5           27           Military Barracks/Base/Headquarters/Checkpost
+## 6           34 Military Personnel (soldiers, troops, officers, forces)
+##                 corp1                                    target1 natlty1
+## 1           U.S. Govt                                 Ambassador     217
+## 2           U.S. Govt                          Embassy personnel     217
+## 3 Desegregated school                                                217
+## 4 Desegregated school George Washington Carver Elementary School     217
+## 5           Army Base             Barracks, Fort Bragg Army Base     217
+## 6                 UDR             Francis Veitch, 23, Protestant     233
+##        natlty1_txt targtype2 targtype2_txt targsubtype2 targsubtype2_txt corp2
+## 1    United States        NA                         NA                       
+## 2    United States        NA                         NA                       
+## 3    United States        NA                         NA                       
+## 4    United States        NA                         NA                       
+## 5    United States        NA                         NA                       
+## 6 Northern Ireland        NA                         NA                       
+##   target2 natlty2 natlty2_txt targtype3 targtype3_txt targsubtype3
+## 1              NA                    NA                         NA
+## 2              NA                    NA                         NA
+## 3              NA                    NA                         NA
+## 4              NA                    NA                         NA
+## 5              NA                    NA                         NA
+## 6              NA                    NA                         NA
+##   targsubtype3_txt corp3 target3 natlty3 natlty3_txt
+## 1                                     NA            
+## 2                                     NA            
+## 3                                     NA            
+## 4                                     NA            
+## 5                                     NA            
+## 6                                     NA            
+##                         gname gsubname gname2 gsubname2 gname3 gsubname3
+## 1                     Unknown                                           
+## 2                     Unknown                                           
+## 3            White extremists                                           
+## 4            White extremists                                           
+## 5         Left-Wing Militants                                           
+## 6 Irish Republican Army (IRA)                                           
+##                                    motive guncertain1 guncertain2 guncertain3
+## 1                                                   0          NA          NA
+## 2                                                   0          NA          NA
+## 3  To protest/prevent school integration.           0          NA          NA
+## 4  To protest/prevent school integration.           0          NA          NA
+## 5 To protest and sabotage the US Military           0          NA          NA
+## 6                                                   0          NA          NA
+##   individual nperps nperpcap claimed claimmode claimmode_txt claim2 claimmode2
+## 1          0     NA       NA      NA        NA                   NA         NA
+## 2          0     NA       NA      NA        NA                   NA         NA
+## 3          0    -99      -99       0        NA                   NA         NA
+## 4          0      3      -99       0        NA                   NA         NA
+## 5          0    -99      -99       0        NA                   NA         NA
+## 6          0     NA       NA      NA        NA                   NA         NA
+##   claimmode2_txt claim3 claimmode3 claimmode3_txt compclaim weaptype1
+## 1                    NA         NA                       NA         6
+## 2                    NA         NA                       NA         6
+## 3                    NA         NA                       NA         6
+## 4                    NA         NA                       NA         8
+## 5                    NA         NA                       NA         6
+## 6                    NA         NA                       NA         5
+##   weaptype1_txt weapsubtype1       weapsubtype1_txt weaptype2 weaptype2_txt
+## 1    Explosives           16 Unknown Explosive Type        NA              
+## 2    Explosives           16 Unknown Explosive Type        NA              
+## 3    Explosives           28           Dynamite/TNT        NA              
+## 4    Incendiary           20    Gasoline or Alcohol        NA              
+## 5    Explosives           16 Unknown Explosive Type        NA              
+## 6      Firearms            5       Unknown Gun Type        NA              
+##   weapsubtype2 weapsubtype2_txt weaptype3 weaptype3_txt weapsubtype3
+## 1           NA                         NA                         NA
+## 2           NA                         NA                         NA
+## 3           NA                         NA                         NA
+## 4           NA                         NA                         NA
+## 5           NA                         NA                         NA
+## 6           NA                         NA                         NA
+##   weapsubtype3_txt weaptype4 weaptype4_txt weapsubtype4 weapsubtype4_txt
+## 1                         NA                         NA                 
+## 2                         NA                         NA                 
+## 3                         NA                         NA                 
+## 4                         NA                         NA                 
+## 5                         NA                         NA                 
+## 6                         NA                         NA                 
+##                                                                       weapdetail
+## 1                                                                      Explosive
+## 2                                                                      Explosive
+## 3                                                                       Dynamite
+## 4 Eight gasoline filled beer bottles with burning wicks were used in the attack.
+## 5                                                                         Bombed
+## 6                                                                        Firearm
+##   nkill nkillus nkillter nwound nwoundus nwoundte property propextent
+## 1     0      NA       NA      0       NA       NA        0         NA
+## 2     2      NA       NA     10       NA       NA        0         NA
+## 3     0       0        0      0        0        0        1          3
+## 4     0       0        0      0        0        0        1          3
+## 5     0       0        0      0        0        0        0         NA
+## 6     1      NA       NA     NA       NA       NA        0         NA
+##                propextent_txt propvalue
+## 1                                    NA
+## 2                                    NA
+## 3 Minor (likely &lt; $1 million)        NA
+## 4 Minor (likely &lt; $1 million)        NA
+## 5                                    NA
+## 6                                    NA
+##                                                                                                                                            propcomment
+## 1                                                                                                                                                     
+## 2                                                                                                                                                     
+## 3                                                                                                                                                     
+## 4 The building was only slightly damaged.  Three firebombs were thrown against walls of the school and five firebombs were thrown through the windows.
+## 5                                                                                                                                                     
+## 6                                                                                                                                                     
+##   ishostkid nhostkid nhostkidus nhours ndays divert kidhijcountry ransom
+## 1         0       NA         NA     NA    NA                           0
+## 2         0       NA         NA     NA    NA                           0
+## 3         0       NA         NA     NA    NA                           0
+## 4         0       NA         NA     NA    NA                           0
+## 5         0       NA         NA     NA    NA                           0
+## 6         0       NA         NA     NA    NA                           0
+##   ransomamt ransomamtus ransompaid ransompaidus ransomnote hostkidoutcome
+## 1        NA          NA         NA           NA                        NA
+## 2        NA          NA         NA           NA                        NA
+## 3        NA          NA         NA           NA                        NA
+## 4        NA          NA         NA           NA                        NA
+## 5        NA          NA         NA           NA                        NA
+## 6        NA          NA         NA           NA                        NA
+##   hostkidoutcome_txt nreleased
+## 1                           NA
+## 2                           NA
+## 3                           NA
+## 4                           NA
+## 5                           NA
+## 6                           NA
+##                                                                                                                                                                                                                                                                                        addnotes
+## 1                                                                                                                                                                                                                                                                                              
+## 2                                                                                                                                                                                                                                                                                              
+## 3 This attack took place during heightened racial tensions as a result of the desegregation of the schools in Columbus, Georgia.  The school was vacant, at the time, because the state and federal courts gave contradictory orders on desegregation.  The school was eventually desegregated.
+## 4                                                                                                                                                                                                                           Witnesses saw three males run away from the scene after the attack.
+## 5                                                                                                                                                                                                                                                                                              
+## 6                                                                                                                                                                                                                                                                                              
+##                                                                                                                                                                                                                                                                                         scite1
+## 1                                                                                                                                                                                                                                                                                             
+## 2                                                                                                                                                                                                                                                                                             
+## 3                                                                                                                                                                                                   James T. Wooten, &quot;Busing Opposition Stiffens in South,&quot; New York Times, September 5, 1971.
+## 4                                                                                                                                                                                                         &quot;Carver School Firebombed at Kannapolis,&quot; New Journal and Guide, September 11, 1971.
+## 5 Marcia McKnight Trick, &quot;Chronology of Incidents of Terroristic, Quasi-Terroristic, and Political Violence in the United States: January 1965 to March 1976,&quot; National Advisory Committee on Criminal Justice Standards and Goals: Report of the Task Force on Disorders and Terrorism, 1976.
+## 6                                                                                                                                                                                                                                                                                             
+##                                                                                                                                                                                                                                                                                         scite2
+## 1                                                                                                                                                                                                                                                                                             
+## 2                                                                                                                                                                                                                                                                                             
+## 3 Marcia McKnight Trick, &quot;Chronology of Incidents of Terroristic, Quasi-Terroristic, and Political Violence in the United States: January 1965 to March 1976,&quot; National Advisory Committee on Criminal Justice Standards and Goals: Report of the Task Force on Disorders and Terrorism, 1976.
+## 4                                                                                                                                                                                                   James T. Wooten, &quot;Busing Opposition Stiffens in South,&quot; New York Times, September 5, 1971.
+## 5                                                                                                                                                                Christopher Hewitt, &quot;Political Violence and Terrorism in Modern America: A Chronology,&quot; Praeger Security International, 2005.
+## 6                                                                                                                                                                                                                                                                                             
+##                                                                                                                                                                                                                                                                                         scite3
+## 1                                                                                                                                                                                                                                                                                             
+## 2                                                                                                                                                                                                                                                                                             
+## 3                                                                                                                                                                Christopher Hewitt, &quot;Political Violence and Terrorism in Modern America: A Chronology,&quot; Praeger Security International, 2005.
+## 4 Marcia McKnight Trick, &quot;Chronology of Incidents of Terroristic, Quasi-Terroristic, and Political Violence in the United States: January 1965 to March 1976,&quot; National Advisory Committee on Criminal Justice Standards and Goals: Report of the Task Force on Disorders and Terrorism, 1976.
+## 5                                                                                                                                                                                                                                                                                             
+## 6                                                                                                                                                                                                                                                                                             
+##         dbsource INT_LOG INT_IDEO INT_MISC INT_ANY related
+## 1           PGIS      -9       -9        1       1        
+## 2           PGIS      -9       -9        1       1        
+## 3 Hewitt Project      -9       -9        0      -9        
+## 4 Hewitt Project      -9       -9        0      -9        
+## 5 Hewitt Project      -9       -9        0      -9        
+## 6           CAIN       0        0        1       1</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="co"># From September 1971 attacks, get coordinates of each attack</span></a>
+<a class="sourceLine" id="cb10-2" data-line-number="2">sep71_coord &lt;-<span class="st"> </span>acts_sep71 <span class="op">%&gt;%</span><span class="st">                         </span><span class="co">## From acts_sep71...</span></a>
+<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="st">  </span><span class="kw">select</span>(eventid, country_txt, latitude, longitude)   <span class="co">## Select the eventid, country_txt, latitude, and longitude columns</span></a>
+<a class="sourceLine" id="cb10-4" data-line-number="4"><span class="kw">head</span>(sep71_coord)</a></code></pre></div>
+<pre><code>##       eventid    country_txt latitude  longitude
+## 1 1.97109e+11       Cambodia 11.55883 104.917445
+## 2 1.97109e+11       Cambodia 11.55883 104.917445
+## 3 1.97109e+11  United States 32.46292 -84.987629
+## 4 1.97109e+11  United States 35.48747 -80.622003
+## 5 1.97109e+11  United States 35.07801 -78.963646
+## 6 1.97109e+11 United Kingdom 54.22641  -7.649053</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="co"># From the previous data frame, order the countries alphabetically and select the top 10</span></a>
+<a class="sourceLine" id="cb12-2" data-line-number="2">coords10 &lt;-<span class="st"> </span>sep71_coord <span class="op">%&gt;%</span><span class="st">     </span><span class="co">## From set71_coord...</span></a>
+<a class="sourceLine" id="cb12-3" data-line-number="3"><span class="st">  </span><span class="kw">arrange</span>(country_txt) <span class="op">%&gt;%</span><span class="st">      </span><span class="co">## arrange the country names in alphabetical order</span></a>
+<a class="sourceLine" id="cb12-4" data-line-number="4"><span class="st">  </span><span class="kw">slice</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)                   <span class="co">## select the ten terror acts at the top</span></a>
+<a class="sourceLine" id="cb12-5" data-line-number="5">coords10</a></code></pre></div>
+<pre><code>##         eventid    country_txt latitude  longitude
+## 1  197109000001       Cambodia 11.55883 104.917445
+## 2  197109000002       Cambodia 11.55883 104.917445
+## 3  197109230001           Iran 35.72453  51.405190
+## 4  197109160001         Israel 31.77160  35.203400
+## 5  197109200001          Italy 41.89096  12.490069
+## 6  197109090001         Jordan       NA         NA
+## 7  197109150001         Jordan       NA         NA
+## 8  197109080001        Lebanon 33.88852  35.503513
+## 9  197109030001 United Kingdom 54.22641  -7.649053
+## 10 197109030002 United Kingdom 54.60771  -5.956210</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="co"># Summarize a few attributes of the September 1971 attacks</span></a>
+<a class="sourceLine" id="cb14-2" data-line-number="2">data_summary &lt;-<span class="st"> </span>acts_sep71 <span class="op">%&gt;%</span><span class="st">                                            </span><span class="co">## From dataset, summarize mean success rate...</span></a>
+<a class="sourceLine" id="cb14-3" data-line-number="3"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">success_rate =</span> <span class="kw">mean</span>(success), <span class="dt">half_way_day =</span> <span class="kw">median</span>(iday))    <span class="co">## ...and day where data can be split in two</span></a>
+<a class="sourceLine" id="cb14-4" data-line-number="4">data_summary</a></code></pre></div>
+<pre><code>##   success_rate half_way_day
+## 1    0.7837838           16</code></pre>
+<p>For more reading on the basic operations (plus some extras), see here: <a href="https://www.hcbravo.org/IntroDataSci/bookdown-notes/principles-basic-operations.html" class="uri">https://www.hcbravo.org/IntroDataSci/bookdown-notes/principles-basic-operations.html</a>.</p>
+</div>
+<div id="data-cleaning-1" class="section level3">
+<h3><span class="header-section-number">2.1.3</span> Data Cleaning</h3>
+<p>In data science, the way data is presented is important to the understanding of the data itself. Confusing variables or missing variables can negatively impact the understanding of what the data is trying to convey. Therefore, it is important to fix these errors when they arise.</p>
+<p>Here are some examples:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="co">## Clean up NA&#39;s from coords10 dataset</span></a>
+<a class="sourceLine" id="cb16-2" data-line-number="2">clean_coords10 &lt;-<span class="st"> </span>sep71_coord <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb16-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(latitude)) <span class="op">%&gt;%</span><span class="st">      </span><span class="co">## Same as coords10, except all instances of NA in lat/long are filtered out</span></a>
+<a class="sourceLine" id="cb16-4" data-line-number="4"><span class="st">  </span><span class="kw">arrange</span>(country_txt) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb16-5" data-line-number="5"><span class="st">  </span><span class="kw">slice</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb16-6" data-line-number="6">clean_coords10</a></code></pre></div>
+<pre><code>##         eventid    country_txt latitude  longitude
+## 1  197109000001       Cambodia 11.55883 104.917445
+## 2  197109000002       Cambodia 11.55883 104.917445
+## 3  197109230001           Iran 35.72453  51.405190
+## 4  197109160001         Israel 31.77160  35.203400
+## 5  197109200001          Italy 41.89096  12.490069
+## 6  197109080001        Lebanon 33.88852  35.503513
+## 7  197109030001 United Kingdom 54.22641  -7.649053
+## 8  197109030002 United Kingdom 54.60771  -5.956210
+## 9  197109040001 United Kingdom 54.18305  -6.341388
+## 10 197109090002 United Kingdom 54.55225  -6.086832</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="co"># Change success column values from 1/0 to TRUE/FALSE to ease readibility for success, multiple, and suicide</span></a>
+<a class="sourceLine" id="cb18-2" data-line-number="2">attrs &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;multiple&quot;</span>, <span class="st">&quot;success&quot;</span>, <span class="st">&quot;suicide&quot;</span>)            <span class="co">## List of column names to change</span></a>
+<a class="sourceLine" id="cb18-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb18-4" data-line-number="4"><span class="cf">for</span> (name <span class="cf">in</span> attrs) {                                   <span class="co">## In for loop, loop for every name              </span></a>
+<a class="sourceLine" id="cb18-5" data-line-number="5">  column &lt;-<span class="st"> </span>acts_sep71[[name]]                          <span class="co">## Select column with the name</span></a>
+<a class="sourceLine" id="cb18-6" data-line-number="6">  repl &lt;-<span class="st"> </span><span class="kw">c</span>()                                           <span class="co">## Make a replacement vector &quot;repl&quot;</span></a>
+<a class="sourceLine" id="cb18-7" data-line-number="7">  <span class="cf">for</span> (x <span class="cf">in</span> column) {                                   <span class="co">## In inner for loop, iterate over every element in selected column</span></a>
+<a class="sourceLine" id="cb18-8" data-line-number="8">    <span class="cf">if</span> (x <span class="op">==</span><span class="st"> </span><span class="dv">1</span>) {                                       <span class="co">## Change 1 to TRUE</span></a>
+<a class="sourceLine" id="cb18-9" data-line-number="9">      repl &lt;-<span class="st"> </span><span class="kw">c</span>(repl, <span class="ot">TRUE</span>)                             <span class="co">## Add to repl</span></a>
+<a class="sourceLine" id="cb18-10" data-line-number="10">    } <span class="cf">else</span> {                                            <span class="co">## Change 0 to FALSE</span></a>
+<a class="sourceLine" id="cb18-11" data-line-number="11">      repl &lt;-<span class="st"> </span><span class="kw">c</span>(repl, <span class="ot">FALSE</span>)                            <span class="co">## Add to repl</span></a>
+<a class="sourceLine" id="cb18-12" data-line-number="12">    }</a>
+<a class="sourceLine" id="cb18-13" data-line-number="13">  }</a>
+<a class="sourceLine" id="cb18-14" data-line-number="14">  <span class="cf">if</span> (<span class="kw">length</span>(repl) <span class="op">&gt;</span><span class="st"> </span><span class="kw">length</span>(acts_sep71<span class="op">$</span>eventid)) {      <span class="co">## If length of repl overshoots by 1 (can happen)</span></a>
+<a class="sourceLine" id="cb18-15" data-line-number="15">    repl &lt;-<span class="st"> </span>repl <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>(<span class="op">-</span><span class="dv">1</span>)                           <span class="co">## Get rid of last element</span></a>
+<a class="sourceLine" id="cb18-16" data-line-number="16">  }</a>
+<a class="sourceLine" id="cb18-17" data-line-number="17">  acts_sep71[[name]] &lt;-<span class="st"> </span>repl                            <span class="co">## Replace old column with replacement</span></a>
+<a class="sourceLine" id="cb18-18" data-line-number="18">}</a>
+<a class="sourceLine" id="cb18-19" data-line-number="19"></a>
+<a class="sourceLine" id="cb18-20" data-line-number="20"><span class="co"># Check</span></a>
+<a class="sourceLine" id="cb18-21" data-line-number="21">check &lt;-<span class="st"> </span>acts_sep71 <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb18-22" data-line-number="22"><span class="st">  </span><span class="kw">select</span>(multiple, success, suicide)</a>
+<a class="sourceLine" id="cb18-23" data-line-number="23"><span class="kw">head</span>(check)</a></code></pre></div>
+<pre><code>##   multiple success suicide
+## 1    FALSE   FALSE   FALSE
+## 2    FALSE    TRUE   FALSE
+## 3    FALSE    TRUE   FALSE
+## 4    FALSE    TRUE   FALSE
+## 5    FALSE   FALSE   FALSE
+## 6    FALSE    TRUE   FALSE</code></pre>
+<p>There are also other ways to clean this dataset, such as getting rid of unused columns. For more data cleaning techniques, see here: <a href="https://www.hcbravo.org/IntroDataSci/bookdown-notes/tidying-data.html" class="uri">https://www.hcbravo.org/IntroDataSci/bookdown-notes/tidying-data.html</a>.</p>
+</div>
+<div id="parsing-and-management" class="section level3">
+<h3><span class="header-section-number">2.1.4</span> Parsing and Management</h3>
+<p>Data parsing is turning input data from one type to another type. A simple example of this was seen in the last problem, in turing a numeric value to a more readable boolean value. Another example of this is reading HTML data from a website and turning it into something useful, such as a data frame. This can be seen in this example, where an online solar flare table has been converted into a data frame in R:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="kw">library</span>(rvest)                                                                            <span class="co">## Library to use</span></a></code></pre></div>
+<pre><code>## Loading required package: xml2</code></pre>
+<pre><code>## 
+## Attaching package: &#39;rvest&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     pluck</code></pre>
+<pre><code>## The following object is masked from &#39;package:readr&#39;:
+## 
+##     guess_encoding</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1">url &lt;-<span class="st"> &quot;https://www.spaceweatherlive.com/en/solar-activity/top-50-solar-flares&quot;</span>           <span class="co">## Website URL</span></a>
+<a class="sourceLine" id="cb25-2" data-line-number="2">tables &lt;-<span class="st"> </span>url <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">read_html</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">html_table</span>(<span class="dt">fill =</span> <span class="ot">TRUE</span>)                                 <span class="co">## Get array of tables</span></a>
+<a class="sourceLine" id="cb25-3" data-line-number="3">swl_data &lt;-<span class="st"> </span>tables[[<span class="dv">1</span>]]                                                                   <span class="co">## Get desired table</span></a>
+<a class="sourceLine" id="cb25-4" data-line-number="4"><span class="kw">names</span>(swl_data) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;rank&quot;</span>, <span class="st">&quot;flare_class&quot;</span>, <span class="st">&quot;date&quot;</span>, <span class="st">&quot;flare_region&quot;</span>, <span class="st">&quot;start_time&quot;</span>,         <span class="co">## Label columns accordingly</span></a>
+<a class="sourceLine" id="cb25-5" data-line-number="5">  <span class="st">&quot;max_time&quot;</span>, <span class="st">&quot;end_time&quot;</span>, <span class="st">&quot;movie&quot;</span>)</a>
+<a class="sourceLine" id="cb25-6" data-line-number="6"><span class="kw">head</span>(swl_data)</a></code></pre></div>
+<pre><code>##   rank flare_class       date flare_region start_time max_time end_time
+## 1    1        X28+ 2003/11/04          486      19:29    19:53    20:06
+## 2    2        X20+ 2001/04/02         9393      21:32    21:51    22:03
+## 3    3      X17.2+ 2003/10/28          486      09:51    11:10    11:24
+## 4    4        X17+ 2005/09/07          808      17:17    17:40    18:03
+## 5    5       X14.4 2001/04/15         9415      13:19    13:50    13:55
+## 6    6         X10 2003/10/29          486      20:37    20:49    21:01
+##               movie
+## 1 MovieView archive
+## 2 MovieView archive
+## 3 MovieView archive
+## 4 MovieView archive
+## 5 MovieView archive
+## 6 MovieView archive</code></pre>
+<p>Using this code, we managed to parse the site data and turn it into a useful form we wanted.</p>
+<p>Data management, on the other hand, is pretty self explanatory; it is basically the upkeep of a dataset, and ensuring that the data in question is correct, updated, and available for people to see. The website where we got our data, Kaggle, is a good example of this: the dataset was updated a few years ago with new data, people are able to provide feedback and report problems, and the visibility is set to public.</p>
+
+</div>
+</div>
 </div>
             </section>
 
@@ -182,7 +824,7 @@ Figure 2.1: Here is a nice figure!
         </div>
       </div>
 <a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="the-basics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="literature.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
