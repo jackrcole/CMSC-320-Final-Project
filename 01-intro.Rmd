@@ -38,7 +38,7 @@ Some basic operations for R include:
 -select() -> selects specific vertical columns in the dataset
 -slice() -> selects specific horizontal rows in a dataset
 -filter() -> selects specific rows in a dataset based on a specific value in a column
--mutate() -> add a new column to the existing dataset
+-mutate() -> add a new column to a dataset
 -arrange() -> sort entities within a column
 -summarize() -> creates a new table with summaries of the columns in the original dataset
 
@@ -60,4 +60,8 @@ head(sept71_coord)
 coords10 <- sep71_coord %>%     ## From set71_coord...
   arrange(country_txt) %>%      ## arrange the country names in alphabetical order
   slice(1:10)                   ## select the ten terror acts at the top
+coords10
+
+# Summarize a few attributes of the September 1971 attacks
+
 ```
