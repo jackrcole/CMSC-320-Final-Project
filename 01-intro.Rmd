@@ -11,7 +11,7 @@ plot(pressure, type = 'b', pch = 19)
 
 For this guide, we'll be using R, and our dataset will be Kaggle's global terrorism database, which can be accessed from here: https://www.kaggle.com/START-UMD/gtd?select=globalterrorismdb_0718dist.csv.
 
-# Getting Started
+## Getting Started
 
 First, put the tidyverse library into your R file.
 
@@ -44,24 +44,39 @@ Some basic operations for R include:
 
 One concept in data science is the use of a pipeline, which looks like "%>%" in R. This bit of "syntactic sugar" makes it easier to understand how the data is being manipulated. Here's some examples with the above functions:
 
-```{r expl}
+```{r expl1}
 # Data with attacks from September 1971
 acts_sep71 <- df %>%            ## From df, have all occurances where iyear is 1971 and imonth is 9
   filter(iyear == 1971) %>%     ## This line filters out all years that are not 1971
   filter(imonth == 9)           ## This line filters out all months that are not 9 (Sept.)
 head(acts_sep71)
+```
 
+```{r expl2}
 # From September 1971 attacks, get coordinates of each attack
 sep71_coord <- acts_sep71 %>%                         ## From acts_sep71...
   select(eventid, country_txt, latitude, longitude)   ## Select the eventid, country_txt, latitude, and longitude columns
 head(sept71_coord)
+```
 
+```{r expl 3}
 # From the previous data frame, order the countries alphabetically and select the top 10
 coords10 <- sep71_coord %>%     ## From set71_coord...
   arrange(country_txt) %>%      ## arrange the country names in alphabetical order
   slice(1:10)                   ## select the ten terror acts at the top
 coords10
-
-# Summarize a few attributes of the September 1971 attacks
-
 ```
+
+```{r expl4}
+# Summarize a few attributes of the September 1971 attacks
+data_summary <- acts_sep71 %>%                                            ## From dataset, summarize mean success rate...
+  summarize(success_rate = mean(success), half_way_day = median(iday))    ## ...and day where data can be split in two
+data_summary
+```
+For more reading on the basic operations (plus some extra), see here: https://www.hcbravo.org/IntroDataSci/bookdown-notes/principles-basic-operations.html.
+
+## Data Cleaning
+
+In data science, the way data is presented is important to the understanding of the data itself. Confusing variables or missing variables can negatively impact the understanding of what the data is trying to convey. Therefore, it is important to fix these errors when they arise.
+
+Here are some examples:
