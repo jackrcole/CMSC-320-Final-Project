@@ -71,11 +71,11 @@ For this guide, we'll be using R, and our dataset will be Kaggle's global terror
 <!-- ``` -->
 <!-- For more reading on the basic operations (plus some extras), see here: https://www.hcbravo.org/IntroDataSci/bookdown-notes/principles-basic-operations.html. -->
 
-## Data Cleaning
+<!-- ## Data Cleaning -->
 
-In data science, the way data is presented is important to the understanding of the data itself. Confusing variables or missing variables can negatively impact the understanding of what the data is trying to convey. Therefore, it is important to fix these errors when they arise.
+<!-- In data science, the way data is presented is important to the understanding of the data itself. Confusing variables or missing variables can negatively impact the understanding of what the data is trying to convey. Therefore, it is important to fix these errors when they arise. -->
 
-### Getting Started
+## Getting Started
 
 First, put the tidyverse library into your R file.
 
@@ -139,7 +139,7 @@ data_summary
 ```
 For more reading on the basic operations (plus some extras), see here: https://www.hcbravo.org/IntroDataSci/bookdown-notes/principles-basic-operations.html.
 
-### Data Cleaning
+## Data Cleaning
 
 In data science, the way data is presented is important to the understanding of the data itself. Confusing variables or missing variables can negatively impact the understanding of what the data is trying to convey. Therefore, it is important to fix these errors when they arise.
 
@@ -182,7 +182,7 @@ head(check)
 
 There are also other ways to clean this dataset, such as getting rid of unused columns. For more data cleaning techniques, see here: https://www.hcbravo.org/IntroDataSci/bookdown-notes/tidying-data.html.
 
-### Parsing and Management
+## Parsing and Management
 
 Data parsing is turning input data from one type to another type. A simple example of this was seen in the last problem, in turing a numeric value to a more readable boolean value. Another example of this is reading HTML data from a website and turning it into something useful, such as a data frame. This can be seen in this example, where an online solar flare table has been converted into a data frame in R:
 

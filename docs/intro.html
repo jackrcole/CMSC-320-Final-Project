@@ -133,12 +133,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a></li>
 <li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
-<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#data-cleaning"><i class="fa fa-check"></i><b>2.1</b> Data Cleaning</a><ul>
-<li class="chapter" data-level="2.1.1" data-path="intro.html"><a href="intro.html#getting-started"><i class="fa fa-check"></i><b>2.1.1</b> Getting Started</a></li>
-<li class="chapter" data-level="2.1.2" data-path="intro.html"><a href="intro.html#pipelines-and-basic-functions"><i class="fa fa-check"></i><b>2.1.2</b> Pipelines and Basic Functions</a></li>
-<li class="chapter" data-level="2.1.3" data-path="intro.html"><a href="intro.html#data-cleaning-1"><i class="fa fa-check"></i><b>2.1.3</b> Data Cleaning</a></li>
-<li class="chapter" data-level="2.1.4" data-path="intro.html"><a href="intro.html#parsing-and-management"><i class="fa fa-check"></i><b>2.1.4</b> Parsing and Management</a></li>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#getting-started"><i class="fa fa-check"></i><b>2.1</b> Getting Started</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="intro.html"><a href="intro.html#pipelines-and-basic-functions"><i class="fa fa-check"></i><b>2.1.1</b> Pipelines and Basic Functions</a></li>
 </ul></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#data-cleaning"><i class="fa fa-check"></i><b>2.2</b> Data Cleaning</a></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#parsing-and-management"><i class="fa fa-check"></i><b>2.3</b> Parsing and Management</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>3</b> Literature</a></li>
 <li class="chapter" data-level="4" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>4</b> Methods</a></li>
@@ -227,11 +226,10 @@ Figure 2.1: Here is a nice figure!
 <!-- data_summary -->
 <!-- ``` -->
 <!-- For more reading on the basic operations (plus some extras), see here: https://www.hcbravo.org/IntroDataSci/bookdown-notes/principles-basic-operations.html. -->
-<div id="data-cleaning" class="section level2">
-<h2><span class="header-section-number">2.1</span> Data Cleaning</h2>
-<p>In data science, the way data is presented is important to the understanding of the data itself. Confusing variables or missing variables can negatively impact the understanding of what the data is trying to convey. Therefore, it is important to fix these errors when they arise.</p>
-<div id="getting-started" class="section level3">
-<h3><span class="header-section-number">2.1.1</span> Getting Started</h3>
+<!-- ## Data Cleaning -->
+<!-- In data science, the way data is presented is important to the understanding of the data itself. Confusing variables or missing variables can negatively impact the understanding of what the data is trying to convey. Therefore, it is important to fix these errors when they arise. -->
+<div id="getting-started" class="section level2">
+<h2><span class="header-section-number">2.1</span> Getting Started</h2>
 <p>First, put the tidyverse library into your R file.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
 <pre><code>## ── Attaching packages ────────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
@@ -458,9 +456,8 @@ Figure 2.1: Here is a nice figure!
 ## 5           PGIS      -9       -9        1       1        
 ## 6 Hewitt Project      -9       -9        0      -9</code></pre>
 <p>As you can see, there is a lot of data to look through. But don’t worry: we have tools to help us.</p>
-</div>
 <div id="pipelines-and-basic-functions" class="section level3">
-<h3><span class="header-section-number">2.1.2</span> Pipelines and Basic Functions</h3>
+<h3><span class="header-section-number">2.1.1</span> Pipelines and Basic Functions</h3>
 <p>Some basic operations for R include:</p>
 <p>-select() -&gt; selects specific vertical columns in the dataset
 -slice() -&gt; selects specific horizontal rows in a dataset
@@ -726,8 +723,9 @@ Figure 2.1: Here is a nice figure!
 ## 1    0.7837838           16</code></pre>
 <p>For more reading on the basic operations (plus some extras), see here: <a href="https://www.hcbravo.org/IntroDataSci/bookdown-notes/principles-basic-operations.html" class="uri">https://www.hcbravo.org/IntroDataSci/bookdown-notes/principles-basic-operations.html</a>.</p>
 </div>
-<div id="data-cleaning-1" class="section level3">
-<h3><span class="header-section-number">2.1.3</span> Data Cleaning</h3>
+</div>
+<div id="data-cleaning" class="section level2">
+<h2><span class="header-section-number">2.2</span> Data Cleaning</h2>
 <p>In data science, the way data is presented is important to the understanding of the data itself. Confusing variables or missing variables can negatively impact the understanding of what the data is trying to convey. Therefore, it is important to fix these errors when they arise.</p>
 <p>Here are some examples:</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="co">## Clean up NA&#39;s from coords10 dataset</span></a>
@@ -779,8 +777,8 @@ Figure 2.1: Here is a nice figure!
 ## 6    FALSE    TRUE   FALSE</code></pre>
 <p>There are also other ways to clean this dataset, such as getting rid of unused columns. For more data cleaning techniques, see here: <a href="https://www.hcbravo.org/IntroDataSci/bookdown-notes/tidying-data.html" class="uri">https://www.hcbravo.org/IntroDataSci/bookdown-notes/tidying-data.html</a>.</p>
 </div>
-<div id="parsing-and-management" class="section level3">
-<h3><span class="header-section-number">2.1.4</span> Parsing and Management</h3>
+<div id="parsing-and-management" class="section level2">
+<h2><span class="header-section-number">2.3</span> Parsing and Management</h2>
 <p>Data parsing is turning input data from one type to another type. A simple example of this was seen in the last problem, in turing a numeric value to a more readable boolean value. Another example of this is reading HTML data from a website and turning it into something useful, such as a data frame. This can be seen in this example, where an online solar flare table has been converted into a data frame in R:</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="kw">library</span>(rvest)                                                                            <span class="co">## Library to use</span></a></code></pre></div>
 <pre><code>## Loading required package: xml2</code></pre>
@@ -815,7 +813,6 @@ Figure 2.1: Here is a nice figure!
 <p>Using this code, we managed to parse the site data and turn it into a useful form we wanted.</p>
 <p>Data management, on the other hand, is pretty self explanatory; it is basically the upkeep of a dataset, and ensuring that the data in question is correct, updated, and available for people to see. The website where we got our data, Kaggle, is a good example of this: the dataset was updated a few years ago with new data, people are able to provide feedback and report problems, and the visibility is set to public.</p>
 
-</div>
 </div>
 </div>
             </section>
