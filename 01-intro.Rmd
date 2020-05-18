@@ -80,3 +80,38 @@ For more reading on the basic operations (plus some extra), see here: https://ww
 In data science, the way data is presented is important to the understanding of the data itself. Confusing variables or missing variables can negatively impact the understanding of what the data is trying to convey. Therefore, it is important to fix these errors when they arise.
 
 Here are some examples:
+
+```{r no_nas}
+## Clean up NA's from coords10 dataset
+clean_coords10 <- sep71_coord %>%
+  filter(!is.na(latitude)) %>%      ## Same as coords10, except all instances of NA in lat/long are filtered out
+  arrange(country_txt) %>%
+  slice(1:10)
+clean_coords10
+```
+
+```{r to_true}
+# Change success column values from 1/0 to TRUE/FALSE to ease readibility for success, multiple, and suicide
+attrs <- c("multiple", "success", "suicide")            ## List of column names to change
+
+for (name in attrs) {                                   ## In for loop, loop for every name              
+  column <- acts_sep71[[name]]                          ## Select column with the name
+  repl <- c()                                           ## Make a replacement vector "repl"
+  for (x in column) {                                   ## In inner for loop, iterate over every element in selected column
+    if (x == 1) {                                       ## Change 1 to TRUE
+      repl <- c(repl, TRUE)                             ## Add to repl
+    } else {                                            ## Change 0 to FALSE
+      repl <- c(repl, FALSE)                            ## Add to repl
+    }
+  }
+  if (length(repl) > length(acts_sep71$eventid)) {      ## If length of repl overshoots by 1 (can happen)
+    repl <- repl %>% head(-1)                           ## Get rid of last element
+  }
+  acts_sep71[[name]] <- repl                            ## Replace old column with replacement
+}
+
+# Check
+check <- acts_sep71 %>% 
+  select(multiple, success, suicide)
+head(check)
+```
