@@ -2,16 +2,16 @@
 
 Welcome to our guide!
 
-As data science becomes an ever increasing 
-
-Figures and tables with captions will be placed in `figure` and `table` environments, respectively.
+From big data to machine learning, as data science becomes an area of ever-increasing importance, it is essential for people to gain an understanding of the foundational theory and applications of data science. Whether it's for a job, freelancing, or personal fun, our aim is to teach you the basics so you can make beautiful data representations like this:
 
 ```{r nice-fig, fig.cap='Here is a nice figure!', out.width='80%', fig.asp=.75, fig.align='center'}
 par(mar = c(4, 4, .1, .1))
 plot(pressure, type = 'b', pch = 19)
 ```
 
-Reference a figure by its code chunk label with the `fig:` prefix, e.g., see Figure \@ref(fig:nice-fig). Similarly, you can reference tables generated from `knitr::kable()`, e.g., see Table \@ref(tab:nice-tab).
+For this guide, we'll be using R, and our dataset will be Kaggle's global terrorism database, which can be accessed from here: https://www.kaggle.com/START-UMD/gtd?select=globalterrorismdb_0718dist.csv.
+
+# Getting Started
 
 ```{r nice-tab, tidy=FALSE}
 knitr::kable(
