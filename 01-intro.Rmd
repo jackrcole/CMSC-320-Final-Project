@@ -1,6 +1,8 @@
 # Introduction {#intro}
 
-Data science is a burgeoning field.
+Welcome to our guide!
+
+As data science becomes an ever increasing 
 
 Figures and tables with captions will be placed in `figure` and `table` environments, respectively.
 
