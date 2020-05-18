@@ -29,7 +29,7 @@ df <- read.csv("globalterrorismdb_0718dist.csv")                 ## Use the read
 head(df)                                                         ## Show top of df
 ```
 
-As you can see, there is a lot of data to parse. But don't worry: we have tools to help us.
+As you can see, there is a lot of data to look through. But don't worry: we have tools to help us.
 
 ## Pipelines and Basic Functions
 
@@ -73,7 +73,7 @@ data_summary <- acts_sep71 %>%                                            ## Fro
   summarize(success_rate = mean(success), half_way_day = median(iday))    ## ...and day where data can be split in two
 data_summary
 ```
-For more reading on the basic operations (plus some extra), see here: https://www.hcbravo.org/IntroDataSci/bookdown-notes/principles-basic-operations.html.
+For more reading on the basic operations (plus some extras), see here: https://www.hcbravo.org/IntroDataSci/bookdown-notes/principles-basic-operations.html.
 
 ## Data Cleaning
 
@@ -120,3 +120,18 @@ There are also other ways to clean this dataset, such as getting rid of unused c
 
 ## Parsing and Management
 
+Data parsing is turning input data from one type to another type. A simple example of this was seen in the last problem, in turing a numeric value to a more readable boolean value. Another example of this is reading HTML data from a website and turning it into something useful, such as a data frame. This can be seen in this example, where an online solar flare table has been converted into a data frame in R:
+
+```{r swl}
+library(rvest)                                                                            ## Library to use
+url <- "https://www.spaceweatherlive.com/en/solar-activity/top-50-solar-flares"           ## Website URL
+tables <- url %>% read_html() %>% html_table(fill = TRUE)                                 ## Get array of tables
+swl_data <- tables[[1]]                                                                   ## Get desired table
+names(swl_data) <- c("rank", "flare_class", "date", "flare_region", "start_time",         ## Label columns accordingly
+  "max_time", "end_time", "movie")
+head(swl_data)
+```
+
+Using this code, we managed to parse the site data and turn it into a useful form we wanted.
+
+Data management, on the other hand, is pretty self explanatory; it is basically the upkeep of a dataset, and ensuring that the data in question is correct, updated, and available for people to see. The website where we got our data, Kaggle, is a good example of this: the dataset was updated a few years ago with new data, people are able to provide feedback and report problems, and the visibility is set to public. 
