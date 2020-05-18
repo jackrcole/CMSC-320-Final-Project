@@ -137,6 +137,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#pipelines-and-basic-functions"><i class="fa fa-check"></i><b>2.2</b> Pipelines and Basic Functions</a></li>
 <li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#data-cleaning"><i class="fa fa-check"></i><b>2.3</b> Data Cleaning</a></li>
 <li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#parsing-and-management"><i class="fa fa-check"></i><b>2.4</b> Parsing and Management</a></li>
+<li class="chapter" data-level="2.5" data-path="intro.html"><a href="intro.html#exploratory-data-analysis"><i class="fa fa-check"></i><b>2.5</b> Exploratory Data Analysis</a></li>
+<li class="chapter" data-level="2.6" data-path="intro.html"><a href="intro.html#machine-learning"><i class="fa fa-check"></i><b>2.6</b> Machine Learning</a></li>
+<li class="chapter" data-level="2.7" data-path="intro.html"><a href="intro.html#hypothesis-testing"><i class="fa fa-check"></i><b>2.7</b> Hypothesis Testing</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>3</b> Literature</a></li>
 <li class="chapter" data-level="4" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>4</b> Methods</a></li>
@@ -689,9 +692,10 @@ Figure 2.1: Here is a nice figure!
 ## 5 Hewitt Project      -9       -9        0      -9        
 ## 6           CAIN       0        0        1       1</code></pre>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="co"># From September 1971 attacks, get coordinates of each attack</span></a>
-<a class="sourceLine" id="cb10-2" data-line-number="2">sep71_coord &lt;-<span class="st"> </span>acts_sep71 <span class="op">%&gt;%</span><span class="st">                         </span><span class="co">## From acts_sep71...</span></a>
-<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="st">  </span><span class="kw">select</span>(eventid, country_txt, latitude, longitude)   <span class="co">## Select the eventid, country_txt, latitude, and longitude columns</span></a>
-<a class="sourceLine" id="cb10-4" data-line-number="4"><span class="kw">head</span>(sep71_coord)</a></code></pre></div>
+<a class="sourceLine" id="cb10-2" data-line-number="2">sep71_coord &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="st">  </span>acts_sep71 <span class="op">%&gt;%</span><span class="st">                         </span><span class="co">## From acts_sep71...</span></a>
+<a class="sourceLine" id="cb10-4" data-line-number="4"><span class="st">  </span><span class="kw">select</span>(eventid, country_txt, latitude, longitude)   <span class="co">## Select the eventid, country_txt, latitude, and longitude columns</span></a>
+<a class="sourceLine" id="cb10-5" data-line-number="5"><span class="kw">head</span>(sep71_coord)</a></code></pre></div>
 <pre><code>##       eventid    country_txt latitude  longitude
 ## 1 1.97109e+11       Cambodia 11.55883 104.917445
 ## 2 1.97109e+11       Cambodia 11.55883 104.917445
@@ -700,10 +704,11 @@ Figure 2.1: Here is a nice figure!
 ## 5 1.97109e+11  United States 35.07801 -78.963646
 ## 6 1.97109e+11 United Kingdom 54.22641  -7.649053</code></pre>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="co"># From the previous data frame, order the countries alphabetically and select the top 10</span></a>
-<a class="sourceLine" id="cb12-2" data-line-number="2">coords10 &lt;-<span class="st"> </span>sep71_coord <span class="op">%&gt;%</span><span class="st">     </span><span class="co">## From set71_coord...</span></a>
-<a class="sourceLine" id="cb12-3" data-line-number="3"><span class="st">  </span><span class="kw">arrange</span>(country_txt) <span class="op">%&gt;%</span><span class="st">      </span><span class="co">## arrange the country names in alphabetical order</span></a>
-<a class="sourceLine" id="cb12-4" data-line-number="4"><span class="st">  </span><span class="kw">slice</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)                   <span class="co">## select the ten terror acts at the top</span></a>
-<a class="sourceLine" id="cb12-5" data-line-number="5">coords10</a></code></pre></div>
+<a class="sourceLine" id="cb12-2" data-line-number="2">coords10 &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb12-3" data-line-number="3"><span class="st">  </span>sep71_coord <span class="op">%&gt;%</span><span class="st">     </span><span class="co">## From set71_coord...</span></a>
+<a class="sourceLine" id="cb12-4" data-line-number="4"><span class="st">  </span><span class="kw">arrange</span>(country_txt) <span class="op">%&gt;%</span><span class="st">      </span><span class="co">## arrange the country names in alphabetical order</span></a>
+<a class="sourceLine" id="cb12-5" data-line-number="5"><span class="st">  </span><span class="kw">slice</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)                   <span class="co">## select the ten terror acts at the top</span></a>
+<a class="sourceLine" id="cb12-6" data-line-number="6">coords10</a></code></pre></div>
 <pre><code>##         eventid    country_txt latitude  longitude
 ## 1  197109000001       Cambodia 11.55883 104.917445
 ## 2  197109000002       Cambodia 11.55883 104.917445
@@ -716,9 +721,10 @@ Figure 2.1: Here is a nice figure!
 ## 9  197109030001 United Kingdom 54.22641  -7.649053
 ## 10 197109030002 United Kingdom 54.60771  -5.956210</code></pre>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="co"># Summarize a few attributes of the September 1971 attacks</span></a>
-<a class="sourceLine" id="cb14-2" data-line-number="2">data_summary &lt;-<span class="st"> </span>acts_sep71 <span class="op">%&gt;%</span><span class="st">                                            </span><span class="co">## From dataset, summarize mean success rate...</span></a>
-<a class="sourceLine" id="cb14-3" data-line-number="3"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">success_rate =</span> <span class="kw">mean</span>(success), <span class="dt">half_way_day =</span> <span class="kw">median</span>(iday))    <span class="co">## ...and day where data can be split in two</span></a>
-<a class="sourceLine" id="cb14-4" data-line-number="4">data_summary</a></code></pre></div>
+<a class="sourceLine" id="cb14-2" data-line-number="2">data_summary &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb14-3" data-line-number="3"><span class="st">  </span>acts_sep71 <span class="op">%&gt;%</span><span class="st">                                            </span><span class="co">## From dataset, summarize mean success rate...</span></a>
+<a class="sourceLine" id="cb14-4" data-line-number="4"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">success_rate =</span> <span class="kw">mean</span>(success), <span class="dt">half_way_day =</span> <span class="kw">median</span>(iday))    <span class="co">## ...and day where data can be split in two</span></a>
+<a class="sourceLine" id="cb14-5" data-line-number="5">data_summary</a></code></pre></div>
 <pre><code>##   success_rate half_way_day
 ## 1    0.7837838           16</code></pre>
 <p>For more reading on the basic operations (plus some extras), see here: <a href="https://www.hcbravo.org/IntroDataSci/bookdown-notes/principles-basic-operations.html" class="uri">https://www.hcbravo.org/IntroDataSci/bookdown-notes/principles-basic-operations.html</a>.</p>
@@ -728,11 +734,12 @@ Figure 2.1: Here is a nice figure!
 <p>In data science, the way data is presented is important to the understanding of the data itself. Confusing variables or missing variables can negatively impact the understanding of what the data is trying to convey. Therefore, it is important to fix these errors when they arise.</p>
 <p>Here are some examples:</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="co">## Clean up NA&#39;s from coords10 dataset</span></a>
-<a class="sourceLine" id="cb16-2" data-line-number="2">clean_coords10 &lt;-<span class="st"> </span>sep71_coord <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb16-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(latitude)) <span class="op">%&gt;%</span><span class="st">      </span><span class="co">## Same as coords10, except all instances of NA in lat/long are filtered out</span></a>
-<a class="sourceLine" id="cb16-4" data-line-number="4"><span class="st">  </span><span class="kw">arrange</span>(country_txt) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb16-5" data-line-number="5"><span class="st">  </span><span class="kw">slice</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb16-6" data-line-number="6">clean_coords10</a></code></pre></div>
+<a class="sourceLine" id="cb16-2" data-line-number="2">clean_coords10 &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb16-3" data-line-number="3"><span class="st">  </span>sep71_coord <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb16-4" data-line-number="4"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(latitude)) <span class="op">%&gt;%</span><span class="st">      </span><span class="co">## Same as coords10, except all instances of NA in lat/long are filtered out</span></a>
+<a class="sourceLine" id="cb16-5" data-line-number="5"><span class="st">  </span><span class="kw">arrange</span>(country_txt) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb16-6" data-line-number="6"><span class="st">  </span><span class="kw">slice</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb16-7" data-line-number="7">clean_coords10</a></code></pre></div>
 <pre><code>##         eventid    country_txt latitude  longitude
 ## 1  197109000001       Cambodia 11.55883 104.917445
 ## 2  197109000002       Cambodia 11.55883 104.917445
@@ -764,9 +771,10 @@ Figure 2.1: Here is a nice figure!
 <a class="sourceLine" id="cb18-18" data-line-number="18">}</a>
 <a class="sourceLine" id="cb18-19" data-line-number="19"></a>
 <a class="sourceLine" id="cb18-20" data-line-number="20"><span class="co"># Check</span></a>
-<a class="sourceLine" id="cb18-21" data-line-number="21">check &lt;-<span class="st"> </span>acts_sep71 <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb18-22" data-line-number="22"><span class="st">  </span><span class="kw">select</span>(multiple, success, suicide)</a>
-<a class="sourceLine" id="cb18-23" data-line-number="23"><span class="kw">head</span>(check)</a></code></pre></div>
+<a class="sourceLine" id="cb18-21" data-line-number="21">check &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb18-22" data-line-number="22"><span class="st">  </span>acts_sep71 <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb18-23" data-line-number="23"><span class="st">  </span><span class="kw">select</span>(multiple, success, suicide)</a>
+<a class="sourceLine" id="cb18-24" data-line-number="24"><span class="kw">head</span>(check)</a></code></pre></div>
 <pre><code>##   multiple success suicide
 ## 1    FALSE   FALSE   FALSE
 ## 2    FALSE    TRUE   FALSE
@@ -790,11 +798,14 @@ Figure 2.1: Here is a nice figure!
 ## 
 ##     guess_encoding</code></pre>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1">url &lt;-<span class="st"> &quot;https://www.spaceweatherlive.com/en/solar-activity/top-50-solar-flares&quot;</span>           <span class="co">## Website URL</span></a>
-<a class="sourceLine" id="cb25-2" data-line-number="2">tables &lt;-<span class="st"> </span>url <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">read_html</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">html_table</span>(<span class="dt">fill =</span> <span class="ot">TRUE</span>)                                 <span class="co">## Get array of tables</span></a>
-<a class="sourceLine" id="cb25-3" data-line-number="3">swl_data &lt;-<span class="st"> </span>tables[[<span class="dv">1</span>]]                                                                   <span class="co">## Get desired table</span></a>
-<a class="sourceLine" id="cb25-4" data-line-number="4"><span class="kw">names</span>(swl_data) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;rank&quot;</span>, <span class="st">&quot;flare_class&quot;</span>, <span class="st">&quot;date&quot;</span>, <span class="st">&quot;flare_region&quot;</span>, <span class="st">&quot;start_time&quot;</span>,         <span class="co">## Label columns accordingly</span></a>
-<a class="sourceLine" id="cb25-5" data-line-number="5">  <span class="st">&quot;max_time&quot;</span>, <span class="st">&quot;end_time&quot;</span>, <span class="st">&quot;movie&quot;</span>)</a>
-<a class="sourceLine" id="cb25-6" data-line-number="6"><span class="kw">head</span>(swl_data)</a></code></pre></div>
+<a class="sourceLine" id="cb25-2" data-line-number="2">tables &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb25-3" data-line-number="3"><span class="st">  </span>url <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb25-4" data-line-number="4"><span class="st">  </span><span class="kw">read_html</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb25-5" data-line-number="5"><span class="st">  </span><span class="kw">html_table</span>(<span class="dt">fill =</span> <span class="ot">TRUE</span>)                                 <span class="co">## Get array of tables</span></a>
+<a class="sourceLine" id="cb25-6" data-line-number="6">swl_data &lt;-<span class="st"> </span>tables[[<span class="dv">1</span>]]                                                                   <span class="co">## Get desired table</span></a>
+<a class="sourceLine" id="cb25-7" data-line-number="7"><span class="kw">names</span>(swl_data) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;rank&quot;</span>, <span class="st">&quot;flare_class&quot;</span>, <span class="st">&quot;date&quot;</span>, <span class="st">&quot;flare_region&quot;</span>, <span class="st">&quot;start_time&quot;</span>,         <span class="co">## Label columns accordingly</span></a>
+<a class="sourceLine" id="cb25-8" data-line-number="8">  <span class="st">&quot;max_time&quot;</span>, <span class="st">&quot;end_time&quot;</span>, <span class="st">&quot;movie&quot;</span>)</a>
+<a class="sourceLine" id="cb25-9" data-line-number="9"><span class="kw">head</span>(swl_data)</a></code></pre></div>
 <pre><code>##   rank flare_class       date flare_region start_time max_time end_time
 ## 1    1        X28+ 2003/11/04          486      19:29    19:53    20:06
 ## 2    2        X20+ 2001/04/02         9393      21:32    21:51    22:03
@@ -811,6 +822,90 @@ Figure 2.1: Here is a nice figure!
 ## 6 MovieView archive</code></pre>
 <p>Using this code, we managed to parse the site data and turn it into a useful form we wanted.</p>
 <p>Data management, on the other hand, is pretty self explanatory; it is basically the upkeep of a dataset, and ensuring that the data in question is correct, updated, and available for people to see. The website where we got our data, Kaggle, is a good example of this: the dataset was updated a few years ago with new data, people are able to provide feedback and report problems, and the visibility is set to public.</p>
+</div>
+<div id="exploratory-data-analysis" class="section level2">
+<h2><span class="header-section-number">2.5</span> Exploratory Data Analysis</h2>
+<p>If we want to discover meaningful conclusions from our dataset, we’re going to need to do something called Exploratory Data Analysis, which is where we look at our data and see what we get.</p>
+<p>Let’s say we wanted to see what effect consumption of alcohol has on the suicide rate of a country. Let’s get some data from the web and visualize it.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb27-2" data-line-number="2"><span class="kw">library</span>(rvest)</a>
+<a class="sourceLine" id="cb27-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb27-4" data-line-number="4">alc_data &lt;-<span class="st"> </span><span class="kw">read_html</span>(<span class="st">&quot;https://en.wikipedia.org/wiki/List_of_countries_by_alcohol_consumption_per_capita&quot;</span>)</a>
+<a class="sourceLine" id="cb27-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb27-6" data-line-number="6">alc_df &lt;-</a>
+<a class="sourceLine" id="cb27-7" data-line-number="7"><span class="st"> </span>alc_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb27-8" data-line-number="8"><span class="st"> </span><span class="kw">html_nodes</span>(<span class="st">&quot;table&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb27-9" data-line-number="9"><span class="st"> </span>.[[<span class="dv">3</span>]] <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb27-10" data-line-number="10"><span class="st"> </span><span class="kw">html_table</span>()</a>
+<a class="sourceLine" id="cb27-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb27-12" data-line-number="12">alc_df &lt;-</a>
+<a class="sourceLine" id="cb27-13" data-line-number="13"><span class="st">  </span>alc_df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb27-14" data-line-number="14"><span class="st">  </span><span class="kw">select</span>(<span class="st">&quot;Country&quot;</span>, <span class="st">&quot;Total&quot;</span>)</a>
+<a class="sourceLine" id="cb27-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb27-16" data-line-number="16">sui_df &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;~/Desktop/data.csv&quot;</span>)</a></code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   Country = col_character(),
+##   Sex = col_character(),
+##   `2016` = col_double(),
+##   `2015` = col_double(),
+##   `2010` = col_double(),
+##   `2000` = col_double()
+## )</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1">sui_df &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb29-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(sui_df, Sex <span class="op">==</span><span class="st"> &quot;Both sexes&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb29-3" data-line-number="3"><span class="st">  </span><span class="kw">select</span>(<span class="st">&quot;Country&quot;</span>, <span class="st">&quot;2010&quot;</span>)</a>
+<a class="sourceLine" id="cb29-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb29-5" data-line-number="5">df &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb29-6" data-line-number="6"><span class="st">  </span>alc_df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb29-7" data-line-number="7"><span class="st">  </span><span class="kw">inner_join</span>(sui_df, <span class="dt">by=</span><span class="st">&quot;Country&quot;</span>)</a>
+<a class="sourceLine" id="cb29-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb29-9" data-line-number="9">df &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb29-10" data-line-number="10"><span class="st">  </span>df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb29-11" data-line-number="11"><span class="st">  </span><span class="kw">rename</span>(<span class="st">&quot;Alcohol_Consumption&quot;</span> =<span class="st"> &quot;Total&quot;</span>, <span class="st">&quot;Suicide_Rate&quot;</span> =<span class="st">&quot;2010&quot;</span>)</a>
+<a class="sourceLine" id="cb29-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb29-13" data-line-number="13">df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb29-14" data-line-number="14"><span class="st">  </span><span class="kw">ggplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Alcohol_Consumption, <span class="dt">y =</span> Suicide_Rate)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb29-15" data-line-number="15"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<p><img src="CMSC-320-Final-Project_files/figure-html/eda-1.png" width="672" />
+Here we can see that while the correlation is somewhat weak, there is some link between how much alcohol people drink and the amount of people that commit suicide.</p>
+</div>
+<div id="machine-learning" class="section level2">
+<h2><span class="header-section-number">2.6</span> Machine Learning</h2>
+<p>In this section we will run a simple linear regresssion to see what trends we can establish from our visualization.</p>
+<p>Let’s see what our graph looks like with a linear regression line added.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1">df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb30-2" data-line-number="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Alcohol_Consumption, <span class="dt">y =</span> Suicide_Rate)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb30-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb30-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span>lm) </a></code></pre></div>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="CMSC-320-Final-Project_files/figure-html/plot%20with%20linear-1.png" width="672" /></p>
+<p>Looks like there is a slight positive correlation. To see if this correlation is statistically significant, we’ll do something called hypothesis testing.</p>
+</div>
+<div id="hypothesis-testing" class="section level2">
+<h2><span class="header-section-number">2.7</span> Hypothesis Testing</h2>
+<p>If the slope that we found is statistically significant, we will have a p-value of greater than 0.05.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1">linear &lt;-<span class="st"> </span><span class="kw">lm</span>(Alcohol_Consumption <span class="op">~</span><span class="st"> </span>Suicide_Rate, <span class="dt">data =</span> df)</a>
+<a class="sourceLine" id="cb32-2" data-line-number="2"><span class="kw">summary</span>(linear)</a></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = Alcohol_Consumption ~ Suicide_Rate, data = df)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -6.319 -3.356 -0.243  3.176  9.117 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)   3.12566    0.57906   5.398 2.45e-07 ***
+## Suicide_Rate  0.28622    0.04809   5.952 1.67e-08 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 3.738 on 157 degrees of freedom
+## Multiple R-squared:  0.1841, Adjusted R-squared:  0.1789 
+## F-statistic: 35.42 on 1 and 157 DF,  p-value: 1.673e-08</code></pre>
+<p>Because our p-value is far less than 0.05, we can safely say that our positive correlation is statistically significant.</p>
 
 </div>
 </div>

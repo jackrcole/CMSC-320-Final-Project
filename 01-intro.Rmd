@@ -118,14 +118,16 @@ head(acts_sep71)
 
 ```{r expl2}
 # From September 1971 attacks, get coordinates of each attack
-sep71_coord <- acts_sep71 %>%                         ## From acts_sep71...
+sep71_coord <- 
+  acts_sep71 %>%                         ## From acts_sep71...
   select(eventid, country_txt, latitude, longitude)   ## Select the eventid, country_txt, latitude, and longitude columns
 head(sep71_coord)
 ```
 
 ```{r expl 3}
 # From the previous data frame, order the countries alphabetically and select the top 10
-coords10 <- sep71_coord %>%     ## From set71_coord...
+coords10 <- 
+  sep71_coord %>%     ## From set71_coord...
   arrange(country_txt) %>%      ## arrange the country names in alphabetical order
   slice(1:10)                   ## select the ten terror acts at the top
 coords10
@@ -133,7 +135,8 @@ coords10
 
 ```{r expl4}
 # Summarize a few attributes of the September 1971 attacks
-data_summary <- acts_sep71 %>%                                            ## From dataset, summarize mean success rate...
+data_summary <- 
+  acts_sep71 %>%                                            ## From dataset, summarize mean success rate...
   summarize(success_rate = mean(success), half_way_day = median(iday))    ## ...and day where data can be split in two
 data_summary
 ```
@@ -147,7 +150,8 @@ Here are some examples:
 
 ```{r no_nas}
 ## Clean up NA's from coords10 dataset
-clean_coords10 <- sep71_coord %>%
+clean_coords10 <- 
+  sep71_coord %>%
   filter(!is.na(latitude)) %>%      ## Same as coords10, except all instances of NA in lat/long are filtered out
   arrange(country_txt) %>%
   slice(1:10)
@@ -175,7 +179,8 @@ for (name in attrs) {                                   ## In for loop, loop for
 }
 
 # Check
-check <- acts_sep71 %>% 
+check <- 
+  acts_sep71 %>% 
   select(multiple, success, suicide)
 head(check)
 ```
@@ -189,7 +194,10 @@ Data parsing is turning input data from one type to another type. A simple examp
 ```{r swl}
 library(rvest)                                                                            ## Library to use
 url <- "https://www.spaceweatherlive.com/en/solar-activity/top-50-solar-flares"           ## Website URL
-tables <- url %>% read_html() %>% html_table(fill = TRUE)                                 ## Get array of tables
+tables <- 
+  url %>% 
+  read_html() %>% 
+  html_table(fill = TRUE)                                 ## Get array of tables
 swl_data <- tables[[1]]                                                                   ## Get desired table
 names(swl_data) <- c("rank", "flare_class", "date", "flare_region", "start_time",         ## Label columns accordingly
   "max_time", "end_time", "movie")
@@ -198,4 +206,73 @@ head(swl_data)
 
 Using this code, we managed to parse the site data and turn it into a useful form we wanted.
 
-Data management, on the other hand, is pretty self explanatory; it is basically the upkeep of a dataset, and ensuring that the data in question is correct, updated, and available for people to see. The website where we got our data, Kaggle, is a good example of this: the dataset was updated a few years ago with new data, people are able to provide feedback and report problems, and the visibility is set to public. 
+Data management, on the other hand, is pretty self explanatory; it is basically the upkeep of a dataset, and ensuring that the data in question is correct, updated, and available for people to see. The website where we got our data, Kaggle, is a good example of this: the dataset was updated a few years ago with new data, people are able to provide feedback and report problems, and the visibility is set to public.
+
+## Exploratory Data Analysis
+
+If we want to discover meaningful conclusions from our dataset, we're going to need to do something called Exploratory Data Analysis, which is where we look at our data and see what we get.
+
+Let's say we wanted to see what effect consumption of alcohol has on the suicide rate of a country. Let's get some data from the web and visualize it.
+
+```{r eda}
+library(tidyverse)
+library(rvest)
+
+alc_data <- read_html("https://en.wikipedia.org/wiki/List_of_countries_by_alcohol_consumption_per_capita")
+
+alc_df <-
+ alc_data %>%
+ html_nodes("table") %>%
+ .[[3]] %>%
+ html_table()
+
+alc_df <-
+  alc_df %>%
+  select("Country", "Total")
+
+sui_df <- read_csv("~/Desktop/data.csv")
+
+sui_df <- 
+  filter(sui_df, Sex == "Both sexes") %>%
+  select("Country", "2010")
+
+df <- 
+  alc_df %>%
+  inner_join(sui_df, by="Country")
+
+df <- 
+  df %>%
+  rename("Alcohol_Consumption" = "Total", "Suicide_Rate" ="2010")
+
+df %>%
+  ggplot(mapping = aes(x = Alcohol_Consumption, y = Suicide_Rate)) +
+  geom_point()
+
+```
+Here we can see that while the correlation is somewhat weak, there is some link between how much alcohol people drink and the amount of people that commit suicide.
+
+## Machine Learning
+
+In this section we will run a simple linear regresssion to see what trends we can establish from our visualization.
+
+Let's see what our graph looks like with a linear regression line added.
+
+```{r plot with linear}
+df %>%
+  ggplot(mapping = aes(x = Alcohol_Consumption, y = Suicide_Rate)) +
+  geom_point() +
+  geom_smooth(method=lm) 
+```
+
+Looks like there is a slight positive correlation. To see if this correlation is statistically significant, we'll do something called hypothesis testing.
+
+## Hypothesis Testing
+
+If the slope that we found is statistically significant, we will have a p-value of greater than 0.05.
+
+```{r hypothesis testing}
+linear <- lm(Alcohol_Consumption ~ Suicide_Rate, data = df)
+summary(linear)
+```
+
+Because our p-value is far less than 0.05, we can safely say that our positive correlation is statistically significant.
