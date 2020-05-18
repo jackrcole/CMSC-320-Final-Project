@@ -115,3 +115,8 @@ check <- acts_sep71 %>%
   select(multiple, success, suicide)
 head(check)
 ```
+
+There are also other ways to clean this dataset, such as getting rid of unused columns. For more data cleaning techniques, see here: https://www.hcbravo.org/IntroDataSci/bookdown-notes/tidying-data.html.
+
+## Parsing and Management
+
