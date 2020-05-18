@@ -21,11 +21,29 @@ library(tidyverse)
 
 This library comes with a variety of functions and operators to make data manipulation and tidying easier. For a comprehensive overview, see here: https://medium.com/@brianward1428/introduction-to-tidyverse-7b3dbf2337d5.
 
-Next, download the csv file onto your machine. To access it, set the working directory to the directory the file is in, and read it into a data frame with a variable name (df in the example below):
+Next, download the csv file onto your machine. To access it, set the working directory to the directory the file is in, and read it into a data frame with a variable name ("df" in the example below):
 
 ```{r data}
 setwd("C:/Users/Amit/Documents/Final Project/Global Terrorism")  ## Use the setwd() function and the path to change directories
 df <- read.csv("globalterrorismdb_0718dist.csv")                 ## Use the read.csv() function with the file name to access csv file
+head(df)                                                         ## Show top of df
 ```
 
+As you can see, there is a lot of data to parse. But don't worry: we have tools to help us.
 
+## Pipelines and Basic Functions
+
+Some basic operations for R include:
+
+-select() -> selects specific vertical columns in the dataset
+-slice() -> selects specific horizontal rows in a dataset
+-filter() -> selects specific rows in a dataset based on a specific value in a column
+-mutate() -> add a new column to the existing dataset
+-arrange() -> sort entities within a column
+-summarize() -> creates a new table with summaries of the columns in the original dataset
+
+One concept in data science is the use of a pipeline, which looks like "%>%" in R. This bit of "syntactic sugar" makes it easier to understand how the data is being manipulated. Here's some examples with the above functions:
+
+```{r expl}
+
+```
