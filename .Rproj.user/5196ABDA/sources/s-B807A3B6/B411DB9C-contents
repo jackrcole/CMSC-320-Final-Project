@@ -1,6 +1,0 @@
-global_terrorism %>%
-  filter(!is.na(nkill) & !is.na(nwound)) %>%
-  group_by(country_txt) %>%
-  summarize(max_kills = max(nkill), max_wounded = max(nwound)) %>%
-  arrange(desc(max_kills)) %>%
-  slice(1:10)
