@@ -1,13 +1,19 @@
 # Introduction {#intro}
 
-You can label chapter and section titles using `{#label}` after them, e.g., we can reference Chapter \@ref(intro). If you do not manually label them, there will be automatic labels anyway, e.g., Chapter \@ref(methods).
+Welcome to our guide!
 
-Figures and tables with captions will be placed in `figure` and `table` environments, respectively.
+As the field of data science grows in importance, from big data to machine learning, it becomes increasingly important to gain an insight on how the basics of data science theory and its applications work. Our goal is to introduce to you the foundations of data science so you are able to apply it in any job, freelancing projects, or personal use! By the end of this guide, we hope you are able plot beautiful data like this:
 
 ```{r nice-fig, fig.cap='Here is a nice figure!', out.width='80%', fig.asp=.75, fig.align='center'}
 par(mar = c(4, 4, .1, .1))
 plot(pressure, type = 'b', pch = 19)
 ```
+
+For this tutorial, we will be using R. Our dataset will be Kaggle's global terrorism dataset, developed by researchers at the University of Maryland. It can be accessed here: https://www.kaggle.com/START-UMD/gtd?select=globalterrorismdb_0718dist.csv.
+
+# The Basics
+
+
 
 Reference a figure by its code chunk label with the `fig:` prefix, e.g., see Figure \@ref(fig:nice-fig). Similarly, you can reference tables generated from `knitr::kable()`, e.g., see Table \@ref(tab:nice-tab).
 
