@@ -95,7 +95,7 @@ head(df)                                                         ## Show top of 
 
 As you can see, there is a lot of data to look through. But don't worry: we have tools to help us.
 
-### Pipelines and Basic Functions
+## Pipelines and Basic Functions
 
 Some basic operations for R include:
 
