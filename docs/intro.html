@@ -140,6 +140,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5" data-path="intro.html"><a href="intro.html#exploratory-data-analysis"><i class="fa fa-check"></i><b>2.5</b> Exploratory Data Analysis</a></li>
 <li class="chapter" data-level="2.6" data-path="intro.html"><a href="intro.html#machine-learning"><i class="fa fa-check"></i><b>2.6</b> Machine Learning</a></li>
 <li class="chapter" data-level="2.7" data-path="intro.html"><a href="intro.html#hypothesis-testing"><i class="fa fa-check"></i><b>2.7</b> Hypothesis Testing</a></li>
+<li class="chapter" data-level="2.8" data-path="intro.html"><a href="intro.html#message-curation"><i class="fa fa-check"></i><b>2.8</b> Message Curation</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>3</b> Literature</a></li>
 <li class="chapter" data-level="4" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>4</b> Methods</a></li>
@@ -906,6 +907,106 @@ Here we can see that while the correlation is somewhat weak, there is some link 
 ## Multiple R-squared:  0.1841, Adjusted R-squared:  0.1789 
 ## F-statistic: 35.42 on 1 and 157 DF,  p-value: 1.673e-08</code></pre>
 <p>Because our p-value is far less than 0.05, we can safely say that our positive correlation is statistically significant.</p>
+</div>
+<div id="message-curation" class="section level2">
+<h2><span class="header-section-number">2.8</span> Message Curation</h2>
+<p>Download the dataset from <a href="https://www.kaggle.com/sudalairajkumar/undata-country-profiles" class="uri">https://www.kaggle.com/sudalairajkumar/undata-country-profiles</a></p>
+<p>Here we take our global terrorism database from before and use it to make some additional observations.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb34-2" data-line-number="2"><span class="kw">library</span>(lubridate)</a></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;lubridate&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:base&#39;:
+## 
+##     date</code></pre>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1">csv_file1 &lt;-<span class="st"> &quot;~/Desktop/globalterrorismdb_0718dist.csv&quot;</span></a>
+<a class="sourceLine" id="cb37-2" data-line-number="2">csv_file2 &lt;-<span class="st"> &quot;~/Desktop/country_profile_variables.csv&quot;</span></a>
+<a class="sourceLine" id="cb37-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb37-4" data-line-number="4">tidy_terr &lt;-<span class="st"> </span><span class="kw">read_csv</span>(csv_file1)</a></code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   .default = col_double(),
+##   approxdate = col_character(),
+##   resolution = col_character(),
+##   country_txt = col_character(),
+##   region_txt = col_character(),
+##   provstate = col_character(),
+##   city = col_character(),
+##   location = col_character(),
+##   summary = col_character(),
+##   alternative_txt = col_character(),
+##   attacktype1_txt = col_character(),
+##   attacktype2_txt = col_character(),
+##   attacktype3 = col_logical(),
+##   attacktype3_txt = col_logical(),
+##   targtype1_txt = col_character(),
+##   targsubtype1_txt = col_character(),
+##   corp1 = col_character(),
+##   target1 = col_character(),
+##   natlty1_txt = col_character(),
+##   targtype2_txt = col_character(),
+##   targsubtype2_txt = col_character()
+##   # ... with 48 more columns
+## )</code></pre>
+<pre><code>## See spec(...) for full column specifications.</code></pre>
+<pre><code>## Warning: 7113 parsing failures.
+##  row             col           expected                                                                                                                                                                                     actual                                       file
+## 1687 ransomamtus     1/0/T/F/TRUE/FALSE 20000                                                                                                                                                                                      &#39;~/Desktop/globalterrorismdb_0718dist.csv&#39;
+## 1687 ransomnote      1/0/T/F/TRUE/FALSE A note, with a sticker of the Black Liberation Army, demanded $20,000 for the safe return of the bartender.  However, the perpetrators left the bartender alone and he was able to escape. &#39;~/Desktop/globalterrorismdb_0718dist.csv&#39;
+## 1771 attacktype3     1/0/T/F/TRUE/FALSE 2                                                                                                                                                                                          &#39;~/Desktop/globalterrorismdb_0718dist.csv&#39;
+## 1771 attacktype3_txt 1/0/T/F/TRUE/FALSE Armed Assault                                                                                                                                                                              &#39;~/Desktop/globalterrorismdb_0718dist.csv&#39;
+## 3432 ransomnote      1/0/T/F/TRUE/FALSE Perpetrators demanded support by the Dutch in the UN for independence for the Moluccan Islands.                                                                                            &#39;~/Desktop/globalterrorismdb_0718dist.csv&#39;
+## .... ............... .................. .......................................................................................................................................................................................... ..........................................
+## See problems(...) for more details.</code></pre>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1"><span class="kw">names</span>(tidy_terr)[<span class="kw">names</span>(tidy_terr)<span class="op">==</span><span class="st">&quot;country&quot;</span>] &lt;-<span class="st"> &quot;countryID&quot;</span></a>
+<a class="sourceLine" id="cb41-2" data-line-number="2"><span class="kw">names</span>(tidy_terr)[<span class="kw">names</span>(tidy_terr)<span class="op">==</span><span class="st">&quot;country_txt&quot;</span>] &lt;-<span class="st"> &quot;country&quot;</span></a>
+<a class="sourceLine" id="cb41-3" data-line-number="3">tidy_country &lt;-<span class="st"> </span><span class="kw">read_csv</span>(csv_file2)</a></code></pre></div>
+<pre><code>## Warning: Duplicated column names deduplicated: &#39;Mobile-cellular subscriptions
+## (per 100 inhabitants)&#39; =&gt; &#39;Mobile-cellular subscriptions (per 100
+## inhabitants)_1&#39; [41]</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   .default = col_character(),
+##   `Population in thousands (2017)` = col_double(),
+##   `Population density (per km2, 2017)` = col_double(),
+##   `Sex ratio (m per 100 f, 2017)` = col_double(),
+##   `GDP: Gross domestic product (million current US$)` = col_double(),
+##   `GDP per capita (current US$)` = col_double(),
+##   `Economy: Industry (% of GVA)` = col_double(),
+##   `Economy: Services and other activity (% of GVA)` = col_double(),
+##   `Agricultural production index (2004-2006=100)` = col_double(),
+##   `Food production index (2004-2006=100)` = col_double(),
+##   `Urban population (% of total population)` = col_double(),
+##   `Health: Total expenditure (% of GDP)` = col_double(),
+##   `Seats held by women in national parliaments %` = col_double(),
+##   `Individuals using the Internet (per 100 inhabitants)` = col_double(),
+##   `CO2 emission estimates (million tons/tons per capita)` = col_double(),
+##   `Energy production, primary (Petajoules)` = col_double(),
+##   `Net Official Development Assist. received (% of GNI)` = col_double()
+## )
+## See spec(...) for full column specifications.</code></pre>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1">tidy_merge &lt;-<span class="st"> </span><span class="kw">merge</span>(tidy_terr, tidy_country, <span class="dt">by=</span><span class="st">&quot;country&quot;</span>)</a>
+<a class="sourceLine" id="cb44-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb44-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb44-4" data-line-number="4">tidy_numcountry &lt;-<span class="st"> </span>tidy_merge <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb44-5" data-line-number="5"><span class="st">  </span><span class="kw">select</span>(country) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb44-6" data-line-number="6"><span class="st">  </span><span class="kw">count</span>(country)</a>
+<a class="sourceLine" id="cb44-7" data-line-number="7">tidy_numcountry</a></code></pre></div>
+<pre><code>## # A tibble: 161 x 2
+##    country                 n
+##    &lt;chr&gt;               &lt;int&gt;
+##  1 Afghanistan         12731
+##  2 Albania                80
+##  3 Algeria              2743
+##  4 Andorra                 1
+##  5 Angola                499
+##  6 Antigua and Barbuda     1
+##  7 Argentina             815
+##  8 Armenia                24
+##  9 Australia             114
+## 10 Austria               115
+## # … with 151 more rows</code></pre>
+<p>What we did was take data from another data set and merge the two by taking a column they had in common, in this case, the name of the country, and merging them. By using multiple data sets, we are able to use as much information as we want in our project, and by merging two datasets, we can relate them to each other.</p>
 
 </div>
 </div>

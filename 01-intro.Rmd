@@ -276,3 +276,32 @@ summary(linear)
 ```
 
 Because our p-value is far less than 0.05, we can safely say that our positive correlation is statistically significant.
+
+## Message Curation
+
+Download the dataset from https://www.kaggle.com/sudalairajkumar/undata-country-profiles
+
+Here we take our global terrorism database from before and use it to make some additional observations.
+
+```{r curation}
+library(tidyverse)
+library(lubridate)
+
+csv_file1 <- "~/Desktop/globalterrorismdb_0718dist.csv"
+csv_file2 <- "~/Desktop/country_profile_variables.csv"
+
+tidy_terr <- read_csv(csv_file1)
+names(tidy_terr)[names(tidy_terr)=="country"] <- "countryID"
+names(tidy_terr)[names(tidy_terr)=="country_txt"] <- "country"
+tidy_country <- read_csv(csv_file2)
+
+tidy_merge <- merge(tidy_terr, tidy_country, by="country")
+
+
+tidy_numcountry <- tidy_merge %>%
+  select(country) %>%
+  count(country)
+tidy_numcountry
+```
+
+What we did was take data from another data set and merge the two by taking a column they had in common, in this case, the name of the country, and merging them. By using multiple data sets, we are able to use as much information as we want in our project, and by merging two datasets, we can relate them to each other.
