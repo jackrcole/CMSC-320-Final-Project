@@ -11,69 +11,6 @@ plot(pressure, type = 'b', pch = 19)
 
 For this guide, we'll be using R, and our dataset will be Kaggle's global terrorism database, which can be accessed from here: https://www.kaggle.com/START-UMD/gtd?select=globalterrorismdb_0718dist.csv.
 
-<!-- ## The Basics -->
-
-<!-- First, put the tidyverse library into your R file. -->
-
-<!-- This library comes with a variety of functions and operators to make data manipulation and tidying easier. For a comprehensive overview, see here: https://medium.com/@brianward1428/introduction-to-tidyverse-7b3dbf2337d5. -->
-
-<!-- Next, download the csv file onto your machine. To access it, set the working directory to the directory the file is in, and read it into a data frame with a variable name ("df" in the example below): -->
-
-<!-- ```{r data} -->
-<!-- setwd("C:/Users/Amit/Documents/Final Project/Global Terrorism")  ## Use the setwd() function and the path to change directories -->
-<!-- df <- read.csv("globalterrorismdb_0718dist.csv")                 ## Use the read.csv() function with the file name to access csv file -->
-<!-- head(df)                                                         ## Show top of df -->
-<!-- ``` -->
-
-<!-- As you can see, there is a lot of data to look through. But don't worry: we have tools to help us. -->
-
-<!-- ## Pipelines and Basic Functions -->
-
-<!-- Some basic operations for R include: -->
-
-<!-- -select() -> selects specific vertical columns in the dataset -->
-<!-- -slice() -> selects specific horizontal rows in a dataset -->
-<!-- -filter() -> selects specific rows in a dataset based on a specific value in a column -->
-<!-- -mutate() -> add a new column to a dataset -->
-<!-- -arrange() -> sort entities within a column -->
-<!-- -summarize() -> creates a new table with summaries of the columns in the original dataset -->
-
-<!-- One concept in data science is the use of a pipeline, which looks like "%>%" in R. This bit of "syntactic sugar" makes it easier to understand how the data is being manipulated. Here's some examples with the above functions: -->
-
-<!-- ```{r expl1} -->
-<!-- # Data with attacks from September 1971 -->
-<!-- acts_sep71 <- df %>%            ## From df, have all occurances where iyear is 1971 and imonth is 9 -->
-<!--   filter(iyear == 1971) %>%     ## This line filters out all years that are not 1971 -->
-<!--   filter(imonth == 9)           ## This line filters out all months that are not 9 (Sept.) -->
-<!-- head(acts_sep71) -->
-<!-- ``` -->
-
-<!-- ```{r expl2} -->
-<!-- # From September 1971 attacks, get coordinates of each attack -->
-<!-- sep71_coord <- acts_sep71 %>%                         ## From acts_sep71... -->
-<!--   select(eventid, country_txt, latitude, longitude)   ## Select the eventid, country_txt, latitude, and longitude columns -->
-<!-- head(sept71_coord) -->
-<!-- ``` -->
-
-<!-- ```{r expl 3} -->
-<!-- # From the previous data frame, order the countries alphabetically and select the top 10 -->
-<!-- coords10 <- sep71_coord %>%     ## From set71_coord... -->
-<!--   arrange(country_txt) %>%      ## arrange the country names in alphabetical order -->
-<!--   slice(1:10)                   ## select the ten terror acts at the top -->
-<!-- coords10 -->
-<!-- ``` -->
-
-<!-- ```{r expl4} -->
-<!-- # Summarize a few attributes of the September 1971 attacks -->
-<!-- data_summary <- acts_sep71 %>%                                            ## From dataset, summarize mean success rate... -->
-<!--   summarize(success_rate = mean(success), half_way_day = median(iday))    ## ...and day where data can be split in two -->
-<!-- data_summary -->
-<!-- ``` -->
-<!-- For more reading on the basic operations (plus some extras), see here: https://www.hcbravo.org/IntroDataSci/bookdown-notes/principles-basic-operations.html. -->
-
-<!-- ## Data Cleaning -->
-
-<!-- In data science, the way data is presented is important to the understanding of the data itself. Confusing variables or missing variables can negatively impact the understanding of what the data is trying to convey. Therefore, it is important to fix these errors when they arise. -->
 
 ## Getting Started
 
@@ -215,32 +152,32 @@ If we want to discover meaningful conclusions from our dataset, we're going to n
 Let's say we wanted to see what effect consumption of alcohol has on the suicide rate of a country. Let's get some data from the web and visualize it.
 
 ```{r eda}
-library(tidyverse)
+library(tidyverse) # Import the necessary libraries
 library(rvest)
 
-alc_data <- read_html("https://en.wikipedia.org/wiki/List_of_countries_by_alcohol_consumption_per_capita")
+alc_data <- read_html("https://en.wikipedia.org/wiki/List_of_countries_by_alcohol_consumption_per_capita") # Get HTML data from the source of info on alcohol
 
-alc_df <-
+alc_df <- # Pull data from the proper HTML table
  alc_data %>%
  html_nodes("table") %>%
  .[[3]] %>%
  html_table()
 
-alc_df <-
+alc_df <- # organize our data into a data frame and limit attributes
   alc_df %>%
   select("Country", "Total")
 
-sui_df <- read_csv("~/Desktop/data.csv")
+sui_df <- read_csv("~/Desktop/data.csv") # Import our suicide data
 
-sui_df <- 
+sui_df <- # Limit our suicide data to info on both genders
   filter(sui_df, Sex == "Both sexes") %>%
   select("Country", "2010")
 
-df <- 
+df <-  # Join our data sets by the countries in both
   alc_df %>%
   inner_join(sui_df, by="Country")
 
-df <- 
+df <-  # Make our column names easier to understand
   df %>%
   rename("Alcohol_Consumption" = "Total", "Suicide_Rate" ="2010")
 
@@ -253,7 +190,9 @@ Here we can see that while the correlation is somewhat weak, there is some link 
 
 ## Machine Learning
 
-In this section we will run a simple linear regresssion to see what trends we can establish from our visualization.
+In this section we will run a simple linear regression to see what trends we can establish from our visualization.
+
+A linear regression simply means that we are fitting our data to a line of the form $ax + b$, where $a$ and $b$ are real numbers. We want to do this in such a way that the distance between our actual data and the trend line established by our linear regression is as little as possible.
 
 Let's see what our graph looks like with a linear regression line added.
 
@@ -268,6 +207,12 @@ Looks like there is a slight positive correlation. To see if this correlation is
 
 ## Hypothesis Testing
 
+for experiments in statistics, we often employ what is known as hypothesis testing. Proper hypothesis testing ensures that we know whether or not our results matter.
+
+Often, we assume the worst case, that our results don't matter. The statement that nothing worth noticing is happening is called the null hypothesis. In this case, the null hypothesis is that there is no correlation between a country's alcohol consumption and its suicide rate.
+
+To determine if the slope we found through our linear regression means anything, we will look at our p-value, which is essentially the probability of getting results at least as extreme as what was actually observed.
+
 If the slope that we found is statistically significant, we will have a p-value of greater than 0.05.
 
 ```{r hypothesis testing}
@@ -276,6 +221,8 @@ summary(linear)
 ```
 
 Because our p-value is far less than 0.05, we can safely say that our positive correlation is statistically significant.
+
+If you want to learn more about statistics and hypothesis testing, visit https://en.wikipedia.org/wiki/Statistical_hypothesis_testing.
 
 ## Message Curation
 
@@ -305,3 +252,5 @@ tidy_numcountry
 ```
 
 What we did was take data from another data set and merge the two by taking a column they had in common, in this case, the name of the country, and merging them. By using multiple data sets, we are able to use as much information as we want in our project, and by merging two datasets, we can relate them to each other.
+
+What message can we can from this data? As we can see, the different countries vary wildly with regards to the amount of incidents of terrorism that take place in their country. Some countries, like Afghanistan, have thousands of incidents, while some countries, such as Andorra, have as little as one recorded incident of terrorism. This is valuable information for us to see which areas of the world have the biggest terrorism problem, but we should also keep in mind that our analysis is only as good as the data is comes from.
