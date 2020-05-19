@@ -1,3 +1,11 @@
 `r if (knitr::is_html_output()) '
-# References {-}
+# Additional Resources {-}
 '`
+
+Here are some additional links for you to learn more about Data Science:
+
+- Hector Bravo's Lecture Notes for CMSC320 - Introduction to Data Science: https://www.hcbravo.org/IntroDataSci/bookdown-notes/
+- Dive into Deep Learning, a free online book written by data scientists at Amazon: http://d2l.ai/chapter_preface/index.html
+- Data Camp, a website with lots of tutorials on the fundamentals and applications of data science: https://learn.datacamp.com/
+- Data Skeptic, a podcast that discusses the most relevant topics in data science: https://dataskeptic.com/
+- Neural Networks and Deep Learning, another free online book about the mathematics and code behind Neural Networks, an important machine learning model: http://neuralnetworksanddeeplearning.com/

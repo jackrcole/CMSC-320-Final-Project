@@ -36,12 +36,12 @@ As you can see, there is a lot of data to look through. But don't worry: we have
 
 Some basic operations for R include:
 
--select() -> selects specific vertical columns in the dataset
--slice() -> selects specific horizontal rows in a dataset
--filter() -> selects specific rows in a dataset based on a specific value in a column
--mutate() -> add a new column to a dataset
--arrange() -> sort entities within a column
--summarize() -> creates a new table with summaries of the columns in the original dataset
+- select() -> selects specific vertical columns in the dataset
+- slice() -> selects specific horizontal rows in a dataset
+- filter() -> selects specific rows in a dataset based on a specific value in a column
+- mutate() -> add a new column to a dataset
+- arrange() -> sort entities within a column
+- summarize() -> creates a new table with summaries of the columns in the original dataset
 
 One concept in data science is the use of a pipeline, which looks like "%>%" in R. This bit of "syntactic sugar" makes it easier to understand how the data is being manipulated. Here's some examples with the above functions:
 

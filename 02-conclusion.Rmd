@@ -1,0 +1,13 @@
+# Conclusion
+
+Throughout this guide, we demonstrated how data science can be best summarized as finding ways to extract information out of many different types of data.
+
+While many may think data science is something that only super-smart people can get the hang of, this is not true. Using a few R libraries as well as knowing some basic operations and syntax, we were able to model outcomes, analyze testing results, transform unusable data from online into something we can use, and manipulate data structures in order to make the subset of data we need useful.
+
+Knowing how to perform these powerful tasks on your own is not only beneficial for career purposes, but personal purposes as well. As a pertinent example, if your community has been recently affected by a major disease outbreak, you can use local data to model the infection rates and death rates, and use that data to fact-check with national sources or gain a better knowledge of the risks involved in going outside, which can have a great effect on the wellbeing of you, your loved ones, and your community.
+
+Furthermore, even if you are not the strongest in computer science, data science can still be more accessible due to its interdisciplinary nature. Every field today uses some sort of data science, from environmental science, to sociology, to government and politics, and even music. And as languages like R and Python keep on getting improved for data science operations and more become more accessible, there has never been a better time to get started.
+
+As a supplement to this guide, the added links and additional sources can be used as additional learning sources. Further reading on concepts like statistical analyses, the syntax of R, other libraries that have features like maps and picture editing, and more can be found elsewhere online.
+
+We hope you enjoyed our guide! Happy mining!
